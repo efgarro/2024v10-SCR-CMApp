@@ -1,0 +1,54 @@
+.authForm_wrapper {
+  background: #b9baa3;
+  width: clamp(20rem, 85vw, 33.75rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  padding-right: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+  height: 100vh;
+}
+
+.authForm_case {
+  width: 360px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.authForm_box {
+  background-color: hsl(57, 84%, 75%);
+  margin-top: 50px;
+  height: 470px;
+}
+
+.authForm_header {
+  margin-top: 1rem;
+  gap: 0.25rem;
+}
+
+.authForm_header > * {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 80%;
+  align-self: center;
+}
+.authForm_input {
+  margin-top: 1.5rem;
+  gap: 0.5rem;
+}
+.authForm_input > * {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 80%;
+  align-self: center;
+}
+
+.authForm_pod {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  justify-content: space-between;
+}

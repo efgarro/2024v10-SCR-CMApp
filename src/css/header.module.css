@@ -1,0 +1,8 @@
+.header_box {
+  height: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #F58220;
+  box-shadow: 0 3px 10px -4px rgb(128 183 190);
+}
