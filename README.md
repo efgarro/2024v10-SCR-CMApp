@@ -9,7 +9,7 @@ This is the Content Management Client to register and update places, articles, u
 - Plain CSS / CSS Modules
 - Material UI
 - Figma Design Tool
-- React Router DOM 
+- React Router DOM
 - AWS SDK for JS v3 / AWS Cognito Auth
 - React Hook Form / Zod Schema Validation / React Select
 - React Query
@@ -19,7 +19,7 @@ This is the Content Management Client to register and update places, articles, u
 - Uppy File Uploader
 - AWS SDK / S3-Client / Cloudflare R2 Object Storage
 - ExifReader
-- React DnD
+- React DnD / Immer for Inmutable State
 - D3 (Data Visualization)
 - Leaflet / Leaflet React
 
@@ -30,7 +30,7 @@ git init
 git add *
 git commit -m "<message>"
 git branch -M main
-git remote add origin https://github.com/efgarro/2024-v03-SCR-CMS.git
+git remote add origin https://github.com/efgarro/2024v10-SCR-CMApp.git
 git push -u origin main
 ```
 
@@ -103,6 +103,10 @@ git config --list --show-origin
 ## App.tsx Highlights
 
 - Include all routes in this component
+
+## App.tsx Highlights
+
+- efgarro@yahoo.com [Ga$24**42ic*]
 
 ## References
 

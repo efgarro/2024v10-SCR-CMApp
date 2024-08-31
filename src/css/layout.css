@@ -45,6 +45,7 @@
 
 @media (min-width: 992px) {
   .layout_screen {
+    background-color: #b9baa382;
     width: 100%;
     height: 100vh;
   }
@@ -57,16 +58,24 @@
     height: 63px;
   }
   .layout_sidebar {
-    background-color: #4c76b7;
+    background-color: #eeeeee;
     flex: 0 0 auto;
     width: 18.75%;
   }
-  .layout_content {
-    background-color: #f5f5f5;
-    flex: 0 0 auto;
-    width: 81.25%;
+  .layout_contentBox {
+    background: #f5f5f5;
+    width: 100%;
+    height: 100%;
   }
-
+  .layout_stepperWrapper {
+    /* background: #80b8be; */
+    width: clamp(16rem, 85vw, 45rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+    padding-right: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+    height: 100%;
+  }
   .layout_wrapper {
     /* background: #80b8be; */
     width: clamp(16rem, 85vw, 75rem);
@@ -84,4 +93,54 @@
     display: flex;
     flex-direction: column;
   }
+  .title_banner {
+    background: #a4539935;
+    width: 100%;
+    height: 100px;
+  }
 }
+
+/* Laptop / Desktop (extra large) Screen Rules >= 1200px | 1140px  */
+
+/* @media (min-width: 1140px) {
+  .layout_screen {
+    width: 100%;
+    height: 100vh;
+  }
+  .layout_header {
+    width: 100%;
+    height: 63px;
+  }
+  .layout_footer {
+    width: 100%;
+    height: 63px;
+  }
+  .layout_sidebar {
+    background-color: #4c77b7bb;
+    flex: 0 0 auto;
+    width: 18.75%;
+  }
+  .layout_content {
+    background-color: #f5f5f5;
+    flex: 0 0 auto;
+    width: 81.25%;
+  }
+
+  .layout_wrapper { */
+/* background: #80b8be; */
+/* width: clamp(16rem, 85vw, 71.25rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+    padding-right: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
+    height: 100%;
+  }
+  .layout_flexRow {
+    display: flex;
+    flex-direction: row;
+  }
+  .layout_flexCol {
+    display: flex;
+    flex-direction: column;
+  }
+} */

@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import AuthLayout from "./components/auth/AuthLayout";
 import AuthChoices from "./components/auth/AuthChoices";
@@ -15,11 +10,12 @@ import Dashboard from "./layouts/Dashboard";
 import AboutPage from "./components/AboutPage";
 import Company from "./components/Company";
 import NotFound from "./components/NotFound";
-import RegisterPlace from "./components/register/RegisterPlace";
+import RegisterPlace from "./components/register/RegisterPlaceStepper";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { customTheme } from "./css/customTheme";
 import "./css/styles.css";
+import RegisterPlaceStepper from "./components/register/RegisterPlaceStepper";
 
 const CMApp = () => {
   const isAuthenticated = () => {
@@ -30,7 +26,7 @@ const CMApp = () => {
     <ThemeProvider theme={customTheme}>
       <BrowserRouter>
         <Routes>
-          <Route element={<AuthLayout/>}>
+          <Route element={<AuthLayout />}>
             <Route path="auth" element={<AuthChoices />} />
             <Route path="auth/confirm/signup" element={<ConfirmSignUpForm />} />
             <Route
@@ -48,8 +44,8 @@ const CMApp = () => {
               )
             }
           >
-            <Route index element={<RegisterPlace />} />
-            <Route path="register/places" element={<RegisterPlace />} />
+            <Route index element={<RegisterPlaceStepper />} />
+            <Route path="register/places" element={<RegisterPlaceStepper />} />
             <Route
               path="register/articles"
               element={<div>register/articles</div>}
