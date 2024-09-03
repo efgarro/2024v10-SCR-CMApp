@@ -12,11 +12,12 @@ import {
 } from "@mui/material";
 
 import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
+import RegisterPlaceStepOne from "./RegisterPlaceStepOne";
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <p>Form 1</p>; // <AddressForm />;
+      return <RegisterPlaceStepOne />; // <AddressForm />;
     case 1:
       return <p>Form 2</p>; // <PaymentForm />;
     case 2:

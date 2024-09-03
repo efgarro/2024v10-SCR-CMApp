@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="layout_footer">
       <div className="layout_wrapper">
-        <div className={`${styles.footer_box}`}>Footer</div>
+        <div className={`${styles.footer_box}`}></div>
       </div>
     </div>
   );

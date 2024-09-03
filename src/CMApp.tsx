@@ -10,12 +10,12 @@ import Dashboard from "./layouts/Dashboard";
 import AboutPage from "./components/AboutPage";
 import Company from "./components/Company";
 import NotFound from "./components/NotFound";
-import RegisterPlace from "./components/register/RegisterPlaceStepper";
+import RegisterPlace from "./components/register_place/RegisterPlaceStepper";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { customTheme } from "./css/customTheme";
 import "./css/styles.css";
-import RegisterPlaceStepper from "./components/register/RegisterPlaceStepper";
+import RegisterPlaceStepper from "./components/register_place/RegisterPlaceStepper";
 
 const CMApp = () => {
   const isAuthenticated = () => {

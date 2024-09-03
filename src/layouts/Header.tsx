@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="layout_header">
       <div className="layout_wrapper">
-        <div className={`${styles.header_box}`}>Header</div>
+        <div className={`${styles.header_box}`}></div>
       </div>
     </div>
   );

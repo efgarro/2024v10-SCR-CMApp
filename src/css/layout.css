@@ -47,7 +47,7 @@
   .layout_screen {
     background-color: #b9baa382;
     width: 100%;
-    height: 100vh;
+    /* min-height: 100vh; */
   }
   .layout_header {
     width: 100%;
@@ -92,11 +92,6 @@
   .layout_flexCol {
     display: flex;
     flex-direction: column;
-  }
-  .title_banner {
-    background: #a4539935;
-    width: 100%;
-    height: 100px;
   }
 }
 
