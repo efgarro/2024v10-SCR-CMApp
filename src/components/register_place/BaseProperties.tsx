@@ -5,7 +5,7 @@ import { useController, useFormContext } from "react-hook-form";
 import styles from "../../css/typeLoc.module.css";
 const rr_baseAttr = 0;
 
-const BaseAttributes = () => {
+const BaseProperties = () => {
   const {
     formState: { errors },
   } = useFormContext();
@@ -50,4 +50,4 @@ const BaseAttributes = () => {
   );
 };
 
-export default BaseAttributes;
+export default BaseProperties;

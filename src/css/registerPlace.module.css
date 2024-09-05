@@ -15,7 +15,7 @@
   padding: 0 1rem;
 }
 
-.baseAttr_box {
+.properties_box {
   background-color: #eeeeee;
   width: 100%;
   /* height: 400px; */
@@ -23,7 +23,7 @@
   margin-right: auto;
 }
 
-.baseAttr_wrapper {
+.properties_wrapper {
   /* background: #80b8be; */
   width: clamp(20rem, 85vw, 33.75rem);
   margin-left: auto;
@@ -33,12 +33,12 @@
   height: 100%;
 }
 
-.baseAttr_LatLon {
+.properties_LatLon {
   gap: 1rem;
   /* justify-content: space-between; */
 }
 
-.baseAttr_LatLon > * {
+.properties_LatLon > * {
   flex: 0 1 auto;
   width: 100%;
   padding: 0 1rem;
