@@ -46,6 +46,7 @@
 @media (min-width: 992px) {
   .layout_screen {
     background-color: #b9baa382;
+    /* background-color: #3A3E40; */
     width: 100%;
     /* min-height: 100vh; */
   }

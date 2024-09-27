@@ -3,12 +3,20 @@ import * as React from "react";
 import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Paper, Typography } from "@mui/material";
+import {
+  Paper,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  Button,
+} from "@mui/material";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 import TypeLoc_Region from "./TypeLoc_Region";
 import TypeLoc_Place from "./TypeLoc_Place";
 import TypeLoc_Hub from "./TypeLoc_Hub";
-import BaseAttributes from "./BaseProperties";
+import BaseProperties from "./BaseProperties";
 
 import {
   registerPlaceSchema,
@@ -28,6 +36,10 @@ const RegisterPlaceStepOne = () => {
       hub: "nicoya",
       name: "",
       description: "",
+      latitude: "",
+      longitude: "",
+      // url: "",
+      // food_genre: "",
     },
     resolver: zodResolver(registerPlaceSchema),
   });
@@ -91,7 +103,7 @@ const RegisterPlaceStepOne = () => {
           </Paper>
           <div className={`${styles.properties_box}`}>
             <div className={`layout_flexCol ${styles.properties_wrapper}`}>
-              <BaseAttributes />
+              <BaseProperties />
             </div>
           </div>
           <Paper
@@ -118,7 +130,49 @@ const RegisterPlaceStepOne = () => {
               }
             </div>
           </div>
-          <input type="submit" />
+          <div className={`${styles.properties_box}`}>
+            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+              <List>
+                {methods.formState.errors?.mobile && (
+                  <ListItem>
+                    <ListItemIcon>
+                      <ErrorOutlineIcon />
+                    </ListItemIcon>
+                    <Typography>
+                      {methods.formState.errors.mobile.message?.toString()}
+                    </Typography>
+                  </ListItem>
+                )}
+                {methods.formState.errors?.email && (
+                  <ListItem>
+                    <ListItemIcon>
+                      <ErrorOutlineIcon />
+                    </ListItemIcon>
+                    <Typography>
+                      {methods.formState.errors.email.message?.toString()}
+                    </Typography>
+                  </ListItem>
+                )}
+              </List>
+            </div>
+          </div>
+          <div className={`${styles.properties_box}`}>
+            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+              <Button
+                type="submit"
+                // color="#F000D0"
+                variant="outlined"
+                sx={{
+                  color: "F000D0",
+                  // background: "#a4539935",
+                  my: "1rem",
+                }}
+              >
+                Submit Form
+              </Button>
+            </div>
+          </div>
+          {/* <input type="submit" /> */}
         </form>
       </FormProvider>
     </div>

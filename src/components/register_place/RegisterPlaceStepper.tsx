@@ -123,6 +123,7 @@ const RegisterPlaceStepper = () => {
                 variant="text"
                 sx={{
                   display: { xs: "none", sm: "flex" },
+                  mt: "1rem",
                 }}
               >
                 Previous
@@ -136,6 +137,7 @@ const RegisterPlaceStepper = () => {
                 fullWidth
                 sx={{
                   display: { xs: "flex", sm: "none" },
+                  mt: "1rem",
                 }}
               >
                 Previous
@@ -147,6 +149,7 @@ const RegisterPlaceStepper = () => {
               onClick={handleNext}
               sx={{
                 width: { xs: "100%", sm: "fit-content" },
+                mt: "1rem",
               }}
             >
               {activeStep === steps.length - 1 ? "Place order" : "Next"}

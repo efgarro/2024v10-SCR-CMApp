@@ -33,13 +33,17 @@
   height: 100%;
 }
 
-.properties_LatLon {
+.properties_podX {
   gap: 1rem;
   /* justify-content: space-between; */
 }
 
-.properties_LatLon > * {
+.properties_podX > * {
   flex: 0 1 auto;
   width: 100%;
   padding: 0 1rem;
+}
+
+.properties_case {
+  width: 100%;
 }

@@ -34,10 +34,10 @@ export const registerPlaceSchema = z.object({
   place_type: z.string(),
   region: z.string(),
   hub: z.string().min(6, { message: "Error !!!" }),
-  name: z.string(),
+  name: z.string().min(5, { message: "Please check the name" }),
   description: z
     .string()
-    .min(20, { message: "Description must be at least 50 chars long" }),
+    .min(20, { message: "Please extend your description" }),
   latitude: z
     .string()
     .regex(
@@ -65,6 +65,12 @@ export const registerPlaceSchema = z.object({
           "Invalid LONGITUDE format. Please review that decimals are 6 max and that no alpha characters are included",
       }
     ),
+  mobile: z.string().length(12).optional(),
+  landline: z.string().optional(),
+  email: z.string().email().optional(),
+  url: z.string().url().optional(),
+  food_genre: z.string().optional(),
+  price_range: z.string().optional(),
 });
 
 export interface RegisterPlaceFormInputs {
@@ -75,6 +81,12 @@ export interface RegisterPlaceFormInputs {
   description: string;
   latitude: string;
   longitude: string;
+  landline?: string;
+  mobile?: string;
+  email?: string;
+  url?: string;
+  food_genre?: string;
+  price_range?: string;
 }
 
 // export interface IBaseAttrInputs {
