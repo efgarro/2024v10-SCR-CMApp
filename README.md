@@ -116,3 +116,4 @@ git config --list --show-origin
 - https://www.arcgis.com/apps/webappviewer/index.html?id=6379ba7935a047ca99195f5e0c3cece9#
 - https://www.sinabi.go.cr/contactenos/preguntele_bibliotecaria.aspx
 - https://designmodo.com/bootstrap-5-layout/
+- https://react-typescript-cheatsheet.netlify.app/docs/basic/setup/

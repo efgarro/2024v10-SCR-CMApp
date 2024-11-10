@@ -3,6 +3,9 @@ import * as React from "react";
 import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+// import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useRegisterPlace } from "./RegisterPlaceContext";
+
 import {
   Paper,
   Typography,
@@ -49,13 +52,19 @@ const RegisterPlaceStepOne = () => {
     name: "place_type",
   });
 
+  const { setFormValues } = useRegisterPlace();
+
+  // React.useEffect(() => {
+  //   // return () => window.localStorage.clear();
+  //   return () => setFormValues(null);
+  // }, []);
+
   const placeTypeChoices = {
     lodge: <LodgeFeatures />,
     resta: <RestaFeatures />,
     wfall: <WfallFeatures />,
   };
 
-  console.log(methods.formState.errors);
   return (
     <div className={`${styles.registerPlace_box}`}>
       <FormProvider {...methods}>
@@ -64,6 +73,7 @@ const RegisterPlaceStepOne = () => {
             console.log(parseFloat(d.latitude));
             console.log(parseFloat(d.longitude));
             console.log(d);
+            setFormValues(d);
           })}
         >
           <Paper

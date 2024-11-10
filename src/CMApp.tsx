@@ -17,6 +17,8 @@ import { customTheme } from "./css/customTheme";
 import "./css/styles.css";
 import RegisterPlaceStepper from "./components/register_place/RegisterPlaceStepper";
 
+import { RegisterPlaceProvider } from "./components/register_place/RegisterPlaceContext";
+
 const CMApp = () => {
   const isAuthenticated = () => {
     const accessToken = sessionStorage.getItem("accessToken");
@@ -46,6 +48,7 @@ const CMApp = () => {
           >
             <Route index element={<RegisterPlaceStepper />} />
             <Route path="register/places" element={<RegisterPlaceStepper />} />
+
             <Route
               path="register/articles"
               element={<div>register/articles</div>}

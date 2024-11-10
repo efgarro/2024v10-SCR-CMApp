@@ -1,79 +1,85 @@
 import * as React from "react";
-import { TextField } from "@mui/material";
+import { Typography, TextField, FormControlLabel, Switch } from "@mui/material";
 import { useController, useFormContext } from "react-hook-form";
-import PhoneInput, { isPossiblePhoneNumber } from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+
+import useToggle from "../../hooks/useToggle";
+import MobileOne from "./MobileOne";
+import MobileTwo from "./MobileTwo";
+import Landline from "./Landline";
 
 import styles from "../../css/registerPlace.module.css";
+import Url from "./Url";
+import Email from "./Email";
+import PriceRange from "./PriceRange";
 
 const LodgeFeatures = () => {
   const {
     formState: { errors },
   } = useFormContext();
-  const {
-    field: mobile,
-    fieldState: { isDirty: isDirtyMobile },
-  } = useController({
-    name: "mobile",
-    defaultValue: "",
-    shouldUnregister: true,
-  });
-  const {
-    field: landline,
-    fieldState: { isDirty: isDirtyLandline },
-  } = useController({
-    name: "landline",
-    defaultValue: "",
-    shouldUnregister: true,
-  });
+
   const { field: email } = useController({
     name: "email",
     defaultValue: "",
     shouldUnregister: true,
   });
+
+  const [isOnMobileOne, toggleMobileOne] = useToggle(true);
+  const [isOnMobileTwo, toggleMobileTwo] = useToggle(false);
+  const [isOnLandline, toggleLandline] = useToggle(true);
+
   return (
-    <>
-      <div className={`layout_flexRow ${styles.properties_podX}`}>
-        <PhoneInput
-          {...mobile}
-          international
-          countryCallingCodeEditable={false}
-          defaultCountry="CR"
-          // error={
-          //   isPossiblePhoneNumber(mobile.value)
-          //     ? undefined
-          //     : isDirtyMobile
-          //     ? "Invalid phone number"
-          //     : undefined
-          // }
-        />
-        {isPossiblePhoneNumber(mobile.value)
-          ? undefined
-          : isDirtyMobile
-          ? "Invalid phone number"
-          : undefined}
-        <PhoneInput
-          {...landline}
-          international
-          countryCallingCodeEditable={false}
-          defaultCountry="CR"
-        />
-        {isPossiblePhoneNumber(mobile.value)
-          ? undefined
-          : isDirtyLandline
-          ? "Invalid phone number"
-          : undefined}
+    <React.Fragment>
+      <div className={`layout_flexRow ${styles.phoneAttr}`}>
+        <div className="phoneAttr_toogle">
+          <FormControlLabel
+            control={
+              <Switch defaultChecked onChange={() => toggleMobileOne()} />
+            }
+            label={
+              <Typography sx={{ fontSize: 14 }}>Mobile/WhatsApp #1</Typography>
+            }
+          />
+        </div>
+        {isOnMobileOne ? (
+          <div className={`${styles.phoneAttr_case}`}>
+            <MobileOne />
+          </div>
+        ) : undefined}
       </div>
-      <div className={`layout_flexRow ${styles.properties_podX}`}>
-        <TextField
-          {...email}
-          error={errors?.email ? true : false}
-          label="Email"
-          variant="outlined"
-          margin="normal"
-        />
+      <div className={`layout_flexRow ${styles.phoneAttr}`}>
+        <div className="phoneAttr_toogle">
+          <FormControlLabel
+            control={
+              <Switch defaultChecked onChange={() => toggleLandline()} />
+            }
+            label={<Typography sx={{ fontSize: 14 }}>Landline</Typography>}
+          />
+        </div>
+        {isOnLandline ? (
+          <div className={`${styles.phoneAttr_case}`}>
+            <Landline />
+          </div>
+        ) : undefined}
       </div>
-    </>
+      <div className={`layout_flexRow ${styles.phoneAttr}`}>
+        <div className="phoneAttr_toogle">
+          <FormControlLabel
+            control={<Switch onChange={() => toggleMobileTwo()} />}
+            label={
+              <Typography sx={{ fontSize: 14 }}>Mobile/WhatsApp #2</Typography>
+            }
+          />
+        </div>
+        {isOnMobileTwo ? (
+          <div className={`${styles.phoneAttr_case}`}>
+            <MobileTwo />
+          </div>
+        ) : undefined}
+      </div>
+      <Email />
+      <Url />
+      <PriceRange />
+    </React.Fragment>
   );
 };
 

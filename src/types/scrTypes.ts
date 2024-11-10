@@ -1,4 +1,7 @@
 import * as z from "zod";
+import { isPhoneValid } from "../utils/phoneNumberUtil";
+// import validator from "validator";
+import isURL from "validator/lib/isURL";
 
 export const authSchema = z.object({
   email: z.string().email(),
@@ -47,15 +50,6 @@ export const registerPlaceSchema = z.object({
           "Invalid LATITUDE format. Please review that decimals are 6 max and that no alpha characters are included",
       }
     ),
-  // .refine(
-  //   (val) => {
-  //     const decimals = val.substring(val.indexOf("."));
-  //     return decimals.length <= 7 ? true : false;
-  //   },
-  //   {
-  //     message: "Can't have more than 6 decimals",
-  //   }
-  // ),
   longitude: z
     .string()
     .regex(
@@ -65,12 +59,20 @@ export const registerPlaceSchema = z.object({
           "Invalid LONGITUDE format. Please review that decimals are 6 max and that no alpha characters are included",
       }
     ),
-  mobile: z.string().length(12).optional(),
+  mobile_one: z
+    .string()
+    .refine((val) => isPhoneValid(val), {
+      message: "Phone is invalid",
+    })
+    .optional(),
   landline: z.string().optional(),
   email: z.string().email().optional(),
-  url: z.string().url().optional(),
+  url: z
+    .string()
+    .refine((val) => isURL(val))
+    .optional(),
   food_genre: z.string().optional(),
-  price_range: z.string().optional(),
+  price_range: z.object({ value: z.string(), label: z.string() }),
 });
 
 export interface RegisterPlaceFormInputs {
@@ -87,6 +89,11 @@ export interface RegisterPlaceFormInputs {
   url?: string;
   food_genre?: string;
   price_range?: string;
+}
+
+export interface IRegisterPlaceContext {
+  formValues: string;
+  setFormValues: (v: any) => void;
 }
 
 // export interface IBaseAttrInputs {
