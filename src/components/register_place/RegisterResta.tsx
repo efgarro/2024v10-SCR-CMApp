@@ -1,9 +1,8 @@
 import * as React from "react";
-
-import { useForm, FormProvider, useWatch } from "react-hook-form";
+let renderCounter = 0;
+import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-// import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useRegisterPlace } from "./RegisterPlaceContext";
 
 import {
@@ -16,86 +15,37 @@ import {
 } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
-import TypeLoc_Region from "./TypeLoc_Region";
-import TypeLoc_Place from "./TypeLoc_Place";
-import TypeLoc_Hub from "./TypeLoc_Hub";
 import BaseProperties from "./BaseProperties";
 
-import {
-  registerPlaceSchema,
-  RegisterPlaceFormInputs,
-} from "../../types/scrTypes";
+import { registerLodgeSchema } from "../../types/scrTypes";
 
 import styles from "../../css/registerPlace.module.css";
 import RestaFeatures from "./RestaFeatures";
-import LodgeFeatures from "./LodgeFeatures";
-import WfallFeatures from "./WfallFeatures";
 
-const RegisterPlaceStepOne = () => {
-  const methods = useForm<RegisterPlaceFormInputs>({
-    defaultValues: {
-      place_type: "lodge",
-      region: "guanac",
-      hub: "nicoya",
-      name: "",
-      description: "",
-      latitude: "",
-      longitude: "",
-      // url: "",
-      // food_genre: "",
-    },
-    resolver: zodResolver(registerPlaceSchema),
+const RegisterResta = () => {
+  const { placeStore, dispatch } = useRegisterPlace();
+
+  const methodsLodge = useForm({
+    defaultValues: placeStore.lodge,
+    resolver: zodResolver(registerLodgeSchema),
   });
 
-  const activePlaceType = useWatch({
-    control: methods.control,
-    name: "place_type",
-  });
-
-  const { setFormValues } = useRegisterPlace();
-
-  // React.useEffect(() => {
-  //   // return () => window.localStorage.clear();
-  //   return () => setFormValues(null);
-  // }, []);
-
-  const placeTypeChoices = {
-    lodge: <LodgeFeatures />,
-    resta: <RestaFeatures />,
-    wfall: <WfallFeatures />,
-  };
+  renderCounter++;
 
   return (
     <div className={`${styles.registerPlace_box}`}>
-      <FormProvider {...methods}>
+      <FormProvider {...methodsLodge}>
         <form
-          onSubmit={methods.handleSubmit((d) => {
+          onSubmit={methodsLodge.handleSubmit((d) => {
             console.log(parseFloat(d.latitude));
             console.log(parseFloat(d.longitude));
             console.log(d);
-            setFormValues(d);
+            dispatch({
+              type: "resta",
+              formValues: d,
+            });
           })}
         >
-          <Paper
-            className="layout_flexCol"
-            sx={{
-              justifyContent: "center",
-              mb: "2rem",
-              height: 50,
-              background: "#a4539935",
-            }}
-            square
-            elevation={0}
-          >
-            <Typography sx={{ pl: "2rem" }} variant="h6">
-              Place Type and Location
-            </Typography>
-          </Paper>
-          <div className={`layout_flexRow ${styles.typeLoc_box}`}>
-            <TypeLoc_Place />
-            <TypeLoc_Region />
-            <TypeLoc_Hub />
-          </div>
           <Paper
             className="layout_flexCol"
             sx={{
@@ -128,38 +78,34 @@ const RegisterPlaceStepOne = () => {
             elevation={0}
           >
             <Typography sx={{ pl: "2rem" }} variant="h6">
-              Place Type Features
+              Restaurant Features
             </Typography>
           </Paper>
           <div className={`${styles.properties_box}`}>
             <div className={`layout_flexCol ${styles.properties_wrapper}`}>
-              {
-                placeTypeChoices[
-                  activePlaceType as keyof typeof placeTypeChoices
-                ]
-              }
+              <RestaFeatures />
             </div>
           </div>
           <div className={`${styles.properties_box}`}>
             <div className={`layout_flexCol ${styles.properties_wrapper}`}>
               <List>
-                {methods.formState.errors?.mobile && (
+                {/* {methodsLodge.formState.errors?.mobile && (
+                    <ListItem>
+                      <ListItemIcon>
+                        <ErrorOutlineIcon />
+                      </ListItemIcon>
+                      <Typography>
+                        {methodsLodge.formState.errors.mobile.message?.toString()}
+                      </Typography>
+                    </ListItem>
+                  )} */}
+                {methodsLodge.formState.errors?.email && (
                   <ListItem>
                     <ListItemIcon>
                       <ErrorOutlineIcon />
                     </ListItemIcon>
                     <Typography>
-                      {methods.formState.errors.mobile.message?.toString()}
-                    </Typography>
-                  </ListItem>
-                )}
-                {methods.formState.errors?.email && (
-                  <ListItem>
-                    <ListItemIcon>
-                      <ErrorOutlineIcon />
-                    </ListItemIcon>
-                    <Typography>
-                      {methods.formState.errors.email.message?.toString()}
+                      {methodsLodge.formState.errors.email.message?.toString()}
                     </Typography>
                   </ListItem>
                 )}
@@ -185,8 +131,9 @@ const RegisterPlaceStepOne = () => {
           {/* <input type="submit" /> */}
         </form>
       </FormProvider>
+      <p>{renderCounter}</p>
     </div>
   );
 };
 
-export default RegisterPlaceStepOne;
+export default RegisterResta;

@@ -6,6 +6,9 @@ import AuthChoices from "./components/auth/AuthChoices";
 import ConfirmSignUpForm from "./components/auth/ConfirmSignUpForm";
 import ConfirmResetPasswordForm from "./components/auth/ConfirmResetPasswordForm";
 
+import { RegisterPlaceProvider } from "./components/register_place/RegisterPlaceContext";
+import RegisterPlaceStepper from "./components/register_place/RegisterPlaceStepper";
+
 import Dashboard from "./layouts/Dashboard";
 import AboutPage from "./components/AboutPage";
 import Company from "./components/Company";
@@ -15,9 +18,6 @@ import RegisterPlace from "./components/register_place/RegisterPlaceStepper";
 import { ThemeProvider } from "@mui/material/styles";
 import { customTheme } from "./css/customTheme";
 import "./css/styles.css";
-import RegisterPlaceStepper from "./components/register_place/RegisterPlaceStepper";
-
-import { RegisterPlaceProvider } from "./components/register_place/RegisterPlaceContext";
 
 const CMApp = () => {
   const isAuthenticated = () => {
@@ -46,8 +46,22 @@ const CMApp = () => {
               )
             }
           >
-            <Route index element={<RegisterPlaceStepper />} />
-            <Route path="register/places" element={<RegisterPlaceStepper />} />
+            <Route
+              index
+              element={
+                <RegisterPlaceProvider>
+                  <RegisterPlaceStepper />
+                </RegisterPlaceProvider>
+              }
+            />
+            <Route
+              path="register/places"
+              element={
+                <RegisterPlaceProvider>
+                  <RegisterPlaceStepper />
+                </RegisterPlaceProvider>
+              }
+            />
 
             <Route
               path="register/articles"

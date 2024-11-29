@@ -3,19 +3,24 @@ import * as React from "react";
 import { useFormContext, useController } from "react-hook-form";
 import { RadioGroup, Radio, Typography, FormControlLabel } from "@mui/material";
 
+import { useRegisterPlace } from "./RegisterPlaceContext";
+
 import styles from "../../css/typeLoc.module.css";
 
 const TypeLoc_Place = () => {
+  const { setNextStepOne } = useRegisterPlace();
   const { control } = useFormContext();
   const { field } = useController({
     name: "place_type",
     control,
   });
 
+  // onChange={() => setNextStepOne(false)}
+
   return (
     <div className={`layout_flexCol ${styles.typeLoc_pod}`}>
       <Typography variant="h6">Place Type</Typography>
-      <RadioGroup {...field}>
+      <RadioGroup  {...field}>
         <FormControlLabel value="lodge" control={<Radio />} label="Lodging" />
         <FormControlLabel
           value="resta"

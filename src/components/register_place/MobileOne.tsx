@@ -9,7 +9,11 @@ const MobileOne = () => {
   const {
     field: mobile_one,
     fieldState: { isDirty: isDirtyMobileOne },
-  } = useController({ name: "mobile_one", shouldUnregister: true });
+  } = useController({
+    name: "mobile_one",
+    defaultValue: "",
+    shouldUnregister: true,
+  });
 
   const isValid = isPhoneValid(mobile_one.value);
 
