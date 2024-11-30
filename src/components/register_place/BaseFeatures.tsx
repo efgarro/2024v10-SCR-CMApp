@@ -7,7 +7,7 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 import styles from "../../css/registerPlace.module.css";
 
-const BaseProperties = () => {
+const BaseFeatures = () => {
   const {
     formState: { errors },
   } = useFormContext();
@@ -95,4 +95,4 @@ const BaseProperties = () => {
   );
 };
 
-export default BaseProperties;
+export default BaseFeatures;

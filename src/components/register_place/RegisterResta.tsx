@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
-import BaseProperties from "./BaseProperties";
+import BaseFeatures from "./BaseFeatures";
 
 import { registerLodgeSchema } from "../../types/scrTypes";
 
@@ -25,7 +25,7 @@ import RestaFeatures from "./RestaFeatures";
 const RegisterResta = () => {
   const { placeStore, dispatch } = useRegisterPlace();
 
-  const methodsLodge = useForm({
+  const methodsResta = useForm({
     defaultValues: placeStore.lodge,
     resolver: zodResolver(registerLodgeSchema),
   });
@@ -34,9 +34,9 @@ const RegisterResta = () => {
 
   return (
     <div className={`${styles.registerPlace_box}`}>
-      <FormProvider {...methodsLodge}>
+      <FormProvider {...methodsResta}>
         <form
-          onSubmit={methodsLodge.handleSubmit((d) => {
+          onSubmit={methodsResta.handleSubmit((d) => {
             console.log(parseFloat(d.latitude));
             console.log(parseFloat(d.longitude));
             console.log(d);
@@ -58,12 +58,12 @@ const RegisterResta = () => {
             elevation={0}
           >
             <Typography sx={{ pl: "2rem" }} variant="h6">
-              Base Properties
+              Base Features
             </Typography>
           </Paper>
           <div className={`${styles.properties_box}`}>
             <div className={`layout_flexCol ${styles.properties_wrapper}`}>
-              <BaseProperties />
+              <BaseFeatures />
             </div>
           </div>
           <Paper
@@ -89,23 +89,23 @@ const RegisterResta = () => {
           <div className={`${styles.properties_box}`}>
             <div className={`layout_flexCol ${styles.properties_wrapper}`}>
               <List>
-                {/* {methodsLodge.formState.errors?.mobile && (
+                {/* {methodsResta.formState.errors?.mobile && (
                     <ListItem>
                       <ListItemIcon>
                         <ErrorOutlineIcon />
                       </ListItemIcon>
                       <Typography>
-                        {methodsLodge.formState.errors.mobile.message?.toString()}
+                        {methodsResta.formState.errors.mobile.message?.toString()}
                       </Typography>
                     </ListItem>
                   )} */}
-                {methodsLodge.formState.errors?.email && (
+                {methodsResta.formState.errors?.email && (
                   <ListItem>
                     <ListItemIcon>
                       <ErrorOutlineIcon />
                     </ListItemIcon>
                     <Typography>
-                      {methodsLodge.formState.errors.email.message?.toString()}
+                      {methodsResta.formState.errors.email.message?.toString()}
                     </Typography>
                   </ListItem>
                 )}
@@ -124,7 +124,7 @@ const RegisterResta = () => {
                   my: "1rem",
                 }}
               >
-                Submit Form
+                Save Restaurant Features
               </Button>
             </div>
           </div>

@@ -19,8 +19,8 @@ const defaultPlaceStore = {
     latitude: "",
     longitude: "",
     mobile_one: "",
-    mobile_two: "",
-    landline: "",
+    // mobile_two: "",
+    // landline: "",
     email: "",
     url: "",
     price_range: "",
@@ -31,8 +31,8 @@ const defaultPlaceStore = {
     latitude: "",
     longitude: "",
     mobile_one: "",
-    mobile_two: "",
-    landline: "",
+    // mobile_two: "",
+    // landline: "",
     email: "",
     url: "",
     food_genre: "",
@@ -57,9 +57,10 @@ export function RegisterPlaceProvider({
   const [activePlaceType, setActivePlaceType] = React.useState(
     placeStore.type_loc.place_type
   );
-
+  
   const [isOnNextStepOne, setNextStepOne] = React.useState(false);
-
+  const [isOnNextStepTwo, setNextStepTwo] = React.useState(false);
+  
   let value: IRegisterPlaceContext = {
     defaultPlaceStore,
     placeStore,
@@ -68,6 +69,8 @@ export function RegisterPlaceProvider({
     setActivePlaceType,
     isOnNextStepOne,
     setNextStepOne,
+    isOnNextStepTwo,
+    setNextStepTwo,
   };
 
   return (

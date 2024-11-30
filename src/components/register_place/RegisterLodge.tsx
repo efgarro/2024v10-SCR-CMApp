@@ -1,7 +1,8 @@
 import * as React from "react";
 let renderCounter = 0;
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import * as _ from "lodash";
 
 import { useRegisterPlace } from "./RegisterPlaceContext";
 
@@ -16,21 +17,30 @@ import {
 
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
-import BaseProperties from "./BaseProperties";
+import BaseFeatures from "./BaseFeatures";
 
-import { registerLodgeSchema } from "../../types/scrTypes";
+import { registerLodgeSchema, ILodge } from "../../types/scrTypes";
 
 import styles from "../../css/registerPlace.module.css";
 import LodgeFeatures from "./LodgeFeatures";
 
 const RegisterLodge = () => {
-  const { placeStore, dispatch } = useRegisterPlace();
+  const { placeStore, dispatch, setNextStepOne } = useRegisterPlace();
 
   const methodsLodge = useForm({
     defaultValues: placeStore.lodge,
     resolver: zodResolver(registerLodgeSchema),
   });
 
+  const watchLodge = useWatch({
+    control: methodsLodge.control,
+  }) as ILodge;
+
+  React.useEffect(() => {
+    if (!_.isEqual(watchLodge, placeStore.lodge)) {
+      setNextStepOne(false);
+    }
+  }, [watchLodge]);
   renderCounter++;
 
   console.log(methodsLodge.formState.errors);
@@ -41,6 +51,7 @@ const RegisterLodge = () => {
         <form
           onSubmit={methodsLodge.handleSubmit((d) => {
             console.log(d);
+            setNextStepOne(true);
             dispatch({
               key: "placeStore",
               type: "lodge",
@@ -60,12 +71,12 @@ const RegisterLodge = () => {
             elevation={0}
           >
             <Typography sx={{ pl: "2rem" }} variant="h6">
-              Base Properties
+              Base Features
             </Typography>
           </Paper>
           <div className={`${styles.properties_box}`}>
             <div className={`layout_flexCol ${styles.properties_wrapper}`}>
-              <BaseProperties />
+              <BaseFeatures />
             </div>
           </div>
           <Paper
@@ -126,7 +137,7 @@ const RegisterLodge = () => {
                   my: "1rem",
                 }}
               >
-                Submit Form
+                Save Lodge Features
               </Button>
             </div>
           </div>

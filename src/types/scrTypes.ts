@@ -156,13 +156,12 @@ interface IBaseProperties {
   description: string;
   latitude: string;
   longitude: string;
-  landline: string;
 }
 
 interface IPhonesNumbers {
-  landline: string;
   mobile_one: string;
-  mobile_two: string;
+  mobile_two?: string;
+  landline?: string;
 }
 
 interface IWebContacts {
@@ -174,13 +173,13 @@ interface IPricing {
   price_range: string;
 }
 
-interface ILodge
+export interface ILodge
   extends IBaseProperties,
     IPhonesNumbers,
     IWebContacts,
     IPricing {}
 
-interface IResta
+export interface IResta
   extends IBaseProperties,
     IPhonesNumbers,
     IWebContacts,
@@ -209,6 +208,8 @@ export interface IRegisterPlaceContext {
   setActivePlaceType: React.Dispatch<React.SetStateAction<string>>;
   isOnNextStepOne: boolean;
   setNextStepOne: React.Dispatch<React.SetStateAction<boolean>>;
+  isOnNextStepTwo: boolean;
+  setNextStepTwo: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // export interface IBaseAttrInputs {

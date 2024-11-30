@@ -24,8 +24,6 @@ import TypeLoc_Hub from "./TypeLoc_Hub";
 import { IType_Loc, typeLocSchema } from "../../types/scrTypes";
 
 import styles from "../../css/registerPlace.module.css";
-import { render } from "react-dom";
-import { Watch } from "@mui/icons-material";
 
 let stepUnoCounter = 0;
 
@@ -112,7 +110,7 @@ const RegisterPlaceStepUno = () => {
                   my: "1rem",
                 }}
               >
-                Submit Form
+                Save Type & Location
               </Button>
             </div>
           </div>

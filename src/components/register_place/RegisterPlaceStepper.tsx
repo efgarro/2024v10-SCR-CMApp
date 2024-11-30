@@ -22,11 +22,13 @@ import RegisterPlaceStepDos from "./RegisterPlaceStepDos";
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <RegisterPlaceStepUno />; // <AddressForm />;
+      return <RegisterPlaceStepUno />; // <TypeLocForm />;
     case 1:
-      return <RegisterPlaceStepDos />; // <PaymentForm />;
+      return <RegisterPlaceStepDos />; // <FeaturesForm />;
     case 2:
-      return <p>Form 3</p>; // <Review />;
+      return <p>Add Photos</p>; // <AddPhotos />;
+    case 3:
+      return <p>Review & Submit</p>; // <ReviewSubmit />;
     default:
       throw new Error("Unknown step");
   }
@@ -35,18 +37,23 @@ function getStepContent(step: number) {
 const RegisterPlaceStepper = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const { isOnNextStepOne } = useRegisterPlace();
-
+  const { isOnNextStepOne, setNextStepOne } = useRegisterPlace();
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    setNextStepOne(false);
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
-  const steps = ["Place Registration", "Add Photos", "Review and Save"];
+  const steps = [
+    "Type and Location",
+    "Features",
+    "Add Photos",
+    "Review & Submit",
+  ];
 
   // return <div className="layout_content">RegisterPlaceStepper</div>;
   stepperCounter++;
@@ -164,7 +171,7 @@ const RegisterPlaceStepper = () => {
                 mt: "1rem",
               }}
             >
-              {activeStep === steps.length - 1 ? "Place order" : "Next"}
+              {activeStep === steps.length - 1 ? "End" : "Next"}
             </Button>
           </Box>
         </React.Fragment>
