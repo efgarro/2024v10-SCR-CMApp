@@ -2,6 +2,7 @@ import * as z from "zod";
 import { isPhoneValid } from "../utils/phoneNumberUtil";
 // import validator from "validator";
 import isURL from "validator/lib/isURL";
+import { UUIDVersion } from "validator";
 
 export const authSchema = z.object({
   email: z.string().email(),
@@ -152,6 +153,8 @@ export interface IType_Loc {
 }
 
 interface IBaseProperties {
+  place_id: string;
+  image_set_id: string;
   name: string;
   description: string;
   latitude: string;
@@ -177,13 +180,16 @@ export interface ILodge
   extends IBaseProperties,
     IPhonesNumbers,
     IWebContacts,
-    IPricing {}
+    IPricing {
+  lodge_id: string;
+}
 
 export interface IResta
   extends IBaseProperties,
     IPhonesNumbers,
     IWebContacts,
     IPricing {
+  resta_id: string;
   food_genre: string;
 }
 
@@ -206,10 +212,8 @@ export interface IRegisterPlaceContext {
   dispatch: React.Dispatch<IAction>;
   activePlaceType: string;
   setActivePlaceType: React.Dispatch<React.SetStateAction<string>>;
-  isOnNextStepOne: boolean;
-  setNextStepOne: React.Dispatch<React.SetStateAction<boolean>>;
-  isOnNextStepTwo: boolean;
-  setNextStepTwo: React.Dispatch<React.SetStateAction<boolean>>;
+  isOnNextStep: boolean;
+  setNextStep: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // export interface IBaseAttrInputs {

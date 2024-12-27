@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-const RegisterPlaceStepOne = () => {
+const RegisterPlaceStepThree = () => {
   return (
-    <div>RegisterPlaceStepOne</div>
+    <div>Review and Save</div>
   )
 }
 
-export default RegisterPlaceStepOne
+export default RegisterPlaceStepThree

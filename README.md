@@ -11,15 +11,15 @@ This is the Content Management Client to register and update places, articles, u
 - Figma Design Tool
 - React Router DOM
 - AWS SDK for JS v3 / AWS Cognito Auth
-- React Hook Form / Zod Schema Validation / React Select
+- React Hook Form / Zod Schema Validation / React Select / React International Phone /    google-libphonenumber
+- Uppy File Uploader
+- React DnD / Immer for Inmutable State
+- AWS SDK / S3-Client / Cloudflare R2 Object Storage
+- ExifReader
 - React Query
 - React Table
 - Axios HTTP Client
 - Passport JWT / Axios Interceptors
-- Uppy File Uploader
-- AWS SDK / S3-Client / Cloudflare R2 Object Storage
-- ExifReader
-- React DnD / Immer for Inmutable State
 - D3 (Data Visualization)
 - Leaflet / Leaflet React
 

@@ -8,12 +8,17 @@ let RegisterPlaceContext = React.createContext<IRegisterPlaceContext>(null!);
 let apCtxt = 0;
 
 const defaultPlaceStore = {
+  
   type_loc: {
     place_type: "lodge",
     region: "guanac",
     hub: "nicoya",
   },
+
   lodge: {
+    place_id: "",
+    image_set_id: "",
+    lodge_id: "",
     name: "",
     description: "",
     latitude: "",
@@ -26,6 +31,9 @@ const defaultPlaceStore = {
     price_range: "",
   },
   resta: {
+    place_id: "",
+    image_set_id: "",
+    resta_id: "",
     name: "",
     description: "",
     latitude: "",
@@ -58,8 +66,8 @@ export function RegisterPlaceProvider({
     placeStore.type_loc.place_type
   );
   
-  const [isOnNextStepOne, setNextStepOne] = React.useState(false);
-  const [isOnNextStepTwo, setNextStepTwo] = React.useState(false);
+  const [isOnNextStep, setNextStep] = React.useState(false);
+  // const [isOnNextStepTwo, setNextStepTwo] = React.useState(false);
   
   let value: IRegisterPlaceContext = {
     defaultPlaceStore,
@@ -67,10 +75,8 @@ export function RegisterPlaceProvider({
     dispatch,
     activePlaceType,
     setActivePlaceType,
-    isOnNextStepOne,
-    setNextStepOne,
-    isOnNextStepTwo,
-    setNextStepTwo,
+    isOnNextStep,
+    setNextStep,
   };
 
   return (

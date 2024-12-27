@@ -27,15 +27,13 @@ import styles from "../../css/registerPlace.module.css";
 
 let stepUnoCounter = 0;
 
-const RegisterPlaceStepUno = () => {
+const RegisterPlaceStepOne = () => {
   const {
-    defaultPlaceStore,
     placeStore,
     dispatch,
     activePlaceType,
-    setActivePlaceType,
-    isOnNextStepOne,
-    setNextStepOne,
+    isOnNextStep,
+    setNextStep,
   } = useRegisterPlace();
 
   const methodsTypeLoc = useForm({
@@ -51,7 +49,7 @@ const RegisterPlaceStepUno = () => {
 
   React.useEffect(() => {
     if (!_.isEqual(watchTypeLoc, placeStore.type_loc)) {
-      setNextStepOne(false);
+      setNextStep(false);
     }
   }, [watchTypeLoc]);
 
@@ -61,8 +59,8 @@ const RegisterPlaceStepUno = () => {
         <form
           onSubmit={methodsTypeLoc.handleSubmit((d) => {
             console.log(d);
-            console.log(isOnNextStepOne);
-            setNextStepOne(true);
+            console.log(isOnNextStep);
+            setNextStep(true);
             dispatch({
               key: "placeStore",
               type: "type_loc",
@@ -97,8 +95,8 @@ const RegisterPlaceStepUno = () => {
                 type="submit"
                 // color="#F000D0"
                 // disabled={
-                //   (isOnNextStepOne ? true : false) ||
-                //   _.isEqual(watchTypeLoc, placeStore.type_loc)
+                //   (isOnNextStep ? true : false) ||
+                //   _.isEqual(watchType, placeStore.type_loc)
                 //     ? true
                 //     : false
                 // }
@@ -122,4 +120,4 @@ const RegisterPlaceStepUno = () => {
   );
 };
 
-export default RegisterPlaceStepUno;
+export default RegisterPlaceStepOne;

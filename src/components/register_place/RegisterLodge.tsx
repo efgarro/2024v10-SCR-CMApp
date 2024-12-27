@@ -3,6 +3,7 @@ let renderCounter = 0;
 import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as _ from "lodash";
+import { v7 as uuidv7 } from "uuid";
 
 import { useRegisterPlace } from "./RegisterPlaceContext";
 
@@ -25,7 +26,7 @@ import styles from "../../css/registerPlace.module.css";
 import LodgeFeatures from "./LodgeFeatures";
 
 const RegisterLodge = () => {
-  const { placeStore, dispatch, setNextStepOne } = useRegisterPlace();
+  const { placeStore, dispatch, setNextStep } = useRegisterPlace();
 
   const methodsLodge = useForm({
     defaultValues: placeStore.lodge,
@@ -38,7 +39,7 @@ const RegisterLodge = () => {
 
   React.useEffect(() => {
     if (!_.isEqual(watchLodge, placeStore.lodge)) {
-      setNextStepOne(false);
+      setNextStep(false);
     }
   }, [watchLodge]);
   renderCounter++;
@@ -50,12 +51,18 @@ const RegisterLodge = () => {
       <FormProvider {...methodsLodge}>
         <form
           onSubmit={methodsLodge.handleSubmit((d) => {
-            console.log(d);
-            setNextStepOne(true);
+            const lodgeValues = {
+              ...d,
+              place_id: uuidv7(),
+              image_set_id: uuidv7(),
+              lodge_id: uuidv7(),
+            };
+            console.log(lodgeValues);
+            setNextStep(true);
             dispatch({
               key: "placeStore",
               type: "lodge",
-              formValues: d,
+              formValues: lodgeValues,
             });
           })}
         >

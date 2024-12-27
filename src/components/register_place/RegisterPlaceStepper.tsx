@@ -16,17 +16,18 @@ import {
 let stepperCounter = 0;
 
 import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
-import RegisterPlaceStepUno from "./RegisterPlaceStepUno";
-import RegisterPlaceStepDos from "./RegisterPlaceStepDos";
+import RegisterPlaceStepOne from "./RegisterPlaceStepOne";
+import RegisterPlaceStepTwo from "./RegisterPlaceStepTwo";
+import RegisterPlaceStepThree from "./RegisterPlaceStepThree";
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <RegisterPlaceStepUno />; // <TypeLocForm />;
+      return <RegisterPlaceStepOne />; // <TypeLocForm />;
     case 1:
-      return <RegisterPlaceStepDos />; // <FeaturesForm />;
+      return <RegisterPlaceStepTwo />; // <FeaturesForm />;
     case 2:
-      return <p>Add Photos</p>; // <AddPhotos />;
+      return <RegisterPlaceStepThree />; // <AddPhotos />;
     case 3:
       return <p>Review & Submit</p>; // <ReviewSubmit />;
     default:
@@ -37,11 +38,11 @@ function getStepContent(step: number) {
 const RegisterPlaceStepper = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const { isOnNextStepOne, setNextStepOne } = useRegisterPlace();
+  const { isOnNextStep, setNextStep } = useRegisterPlace();
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    setNextStepOne(false);
+    setNextStep(false);
   };
 
   const handleBack = () => {
@@ -51,8 +52,9 @@ const RegisterPlaceStepper = () => {
   const steps = [
     "Type and Location",
     "Features",
+    "Review & Save to Database",
+    "Place Summary",
     "Add Photos",
-    "Review & Submit",
   ];
 
   // return <div className="layout_content">RegisterPlaceStepper</div>;
@@ -165,7 +167,7 @@ const RegisterPlaceStepper = () => {
               variant="contained"
               endIcon={<ChevronRightRounded />}
               onClick={handleNext}
-              disabled={!isOnNextStepOne ? true : false}
+              disabled={!isOnNextStep ? true : false}
               sx={{
                 width: { xs: "100%", sm: "fit-content" },
                 mt: "1rem",
