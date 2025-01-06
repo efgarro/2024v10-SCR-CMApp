@@ -16,49 +16,54 @@ import {
 let stepperCounter = 0;
 
 import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
-import RegisterPlaceStepOne from "./RegisterPlaceStepOne";
-import RegisterPlaceStepTwo from "./RegisterPlaceStepTwo";
-import RegisterPlaceStepThree from "./RegisterPlaceStepThree";
+import PlacePropsStepOne from "./PlacePropsStepOne";
+import PlacePropsStepTwo from "./PlacePropsStepTwo";
+import PlacePropsStepThree from "./PlacePropsStepThree";
+import PlacePropsSummary from "./PlacePropsSummary";
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <RegisterPlaceStepOne />; // <TypeLocForm />;
+      return <PlacePropsStepOne />; // TypeLocForm;
     case 1:
-      return <RegisterPlaceStepTwo />; // <FeaturesForm />;
+      return <PlacePropsStepTwo />; // FeaturesForm;
     case 2:
-      return <RegisterPlaceStepThree />; // <AddPhotos />;
-    case 3:
-      return <p>Review & Submit</p>; // <ReviewSubmit />;
+      return <PlacePropsStepThree />; // Review & Submit />;
     default:
       throw new Error("Unknown step");
   }
 }
 
-const RegisterPlaceStepper = () => {
+const PlacePropsStepper = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const { isOnNextStep, setNextStep } = useRegisterPlace();
+  const { defaultPlacePropsStore, dispatchPlacePropsStore, isOnNextStep, setNextStep } =
+    useRegisterPlace();
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
-    setNextStep(false);
+    console.log(activeStep);
+    if (activeStep === 0) {
+      setActiveStep(activeStep + 1);
+      setNextStep(false);
+    } else if (activeStep === 1) {
+      setActiveStep(activeStep + 1);
+    } else if (activeStep === 2) {
+      setTimeout(() => {
+        setActiveStep(activeStep + 1);
+      }, 2000);
+      dispatchPlacePropsStore({
+        key: "placeStore",
+        type: "reset",
+        formValues: defaultPlacePropsStore,
+      });
+    }
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
-  const steps = [
-    "Type and Location",
-    "Features",
-    "Review & Save to Database",
-    "Place Summary",
-    "Add Photos",
-  ];
-
-  // return <div className="layout_content">RegisterPlaceStepper</div>;
-  stepperCounter++;
+  const steps = ["Type and Location", "Features", "Review & Save to Database"];
 
   return (
     <div className="layout_stepperWrapper">
@@ -67,14 +72,17 @@ const RegisterPlaceStepper = () => {
         sx={{
           justifyContent: "center",
           mb: "2rem",
-          height: 100,
+          height: 120,
           background: "#a4539935",
         }}
         square
         elevation={0}
       >
         <Typography align="center" /*sx={{ fontWeight: 600 }}*/ variant="h5">
-          Place Registration
+          Register Place
+        </Typography>
+        <Typography align="center" /*sx={{ fontWeight: 600 }}*/ variant="h6">
+          Properties and Features
         </Typography>
       </Paper>
       <Stepper
@@ -102,24 +110,7 @@ const RegisterPlaceStepper = () => {
       </Stepper>
       <p>{stepperCounter}</p>
       {activeStep === steps.length ? (
-        <Stack spacing={2} useFlexGap>
-          <Typography variant="h1">📦</Typography>
-          <Typography variant="h5">Thank you for your order!</Typography>
-          <Typography variant="body1" color="text.secondary">
-            Your order number is
-            <strong>&nbsp;#140396</strong>. We have emailed your order
-            confirmation and will update you once its shipped.
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              alignSelf: "start",
-              width: { xs: "100%", sm: "auto" },
-            }}
-          >
-            Go to my orders
-          </Button>
-        </Stack>
+        <PlacePropsSummary />
       ) : (
         <React.Fragment>
           {getStepContent(activeStep)}
@@ -173,7 +164,9 @@ const RegisterPlaceStepper = () => {
                 mt: "1rem",
               }}
             >
-              {activeStep === steps.length - 1 ? "End" : "Next"}
+              {activeStep === steps.length - 1
+                ? "Save to Cloud Database"
+                : "Next"}
             </Button>
           </Box>
         </React.Fragment>
@@ -182,4 +175,4 @@ const RegisterPlaceStepper = () => {
   );
 };
 
-export default RegisterPlaceStepper;
+export default PlacePropsStepper;

@@ -1,14 +1,13 @@
 import * as React from "react";
 import { IRegisterPlaceContext } from "../../types/scrTypes";
 import useReducerPersist from "../../hooks/useReducerPersist";
-import placeStoreReducer from "../../utils/placeStoreReducer";
+import placePropsStoreReducer from "../../utils/placePropsStoreReducer";
 
 let RegisterPlaceContext = React.createContext<IRegisterPlaceContext>(null!);
 
 let apCtxt = 0;
 
-const defaultPlaceStore = {
-  
+const defaultPlacePropsStore = {
   type_loc: {
     place_type: "lodge",
     region: "guanac",
@@ -28,7 +27,7 @@ const defaultPlaceStore = {
     // landline: "",
     email: "",
     url: "",
-    price_range: "",
+    price_range: { value: "", label: "" },
   },
   resta: {
     place_id: "",
@@ -44,7 +43,7 @@ const defaultPlaceStore = {
     email: "",
     url: "",
     food_genre: "",
-    price_range: "",
+    price_range: { value: "", label: "" },
   },
 };
 
@@ -57,22 +56,26 @@ export function RegisterPlaceProvider({
     return () => console.log("Component Unmounted");
   }, []);
 
-  const [placeStore, dispatch] = useReducerPersist(
-    "placeStore",
-    defaultPlaceStore,
-    placeStoreReducer
+  const [placePropsStore, dispatchPlacePropsStore] = useReducerPersist(
+    "placePropsStore",
+    defaultPlacePropsStore,
+    placePropsStoreReducer
   );
+  // const [addImagesStore, dispatchAddImagesStore] = useReducerPersist(
+  //   "addImagesStore",
+  //   defaultAddImagesStore,
+  //   addImagesStoreReducer
+  // );
   const [activePlaceType, setActivePlaceType] = React.useState(
-    placeStore.type_loc.place_type
+    placePropsStore.type_loc.place_type
   );
-  
+
   const [isOnNextStep, setNextStep] = React.useState(false);
-  // const [isOnNextStepTwo, setNextStepTwo] = React.useState(false);
-  
+
   let value: IRegisterPlaceContext = {
-    defaultPlaceStore,
-    placeStore,
-    dispatch,
+    defaultPlacePropsStore,
+    placePropsStore,
+    dispatchPlacePropsStore,
     activePlaceType,
     setActivePlaceType,
     isOnNextStep,

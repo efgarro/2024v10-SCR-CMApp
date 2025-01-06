@@ -7,13 +7,13 @@ import ConfirmSignUpForm from "./components/auth/ConfirmSignUpForm";
 import ConfirmResetPasswordForm from "./components/auth/ConfirmResetPasswordForm";
 
 import { RegisterPlaceProvider } from "./components/register_place/RegisterPlaceContext";
-import RegisterPlaceStepper from "./components/register_place/RegisterPlaceStepper";
+import PlacePropsStepper from "./components/register_place/PlacePropsStepper";
 
 import Dashboard from "./layouts/Dashboard";
 import AboutPage from "./components/AboutPage";
 import Company from "./components/Company";
 import NotFound from "./components/NotFound";
-import RegisterPlace from "./components/register_place/RegisterPlaceStepper";
+import RegisterPlace from "./components/register_place/PlacePropsStepper";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { customTheme } from "./css/customTheme";
@@ -50,7 +50,7 @@ const CMApp = () => {
               index
               element={
                 <RegisterPlaceProvider>
-                  <RegisterPlaceStepper />
+                  <PlacePropsStepper />
                 </RegisterPlaceProvider>
               }
             />
@@ -58,7 +58,7 @@ const CMApp = () => {
               path="register/places"
               element={
                 <RegisterPlaceProvider>
-                  <RegisterPlaceStepper />
+                  <PlacePropsStepper />
                 </RegisterPlaceProvider>
               }
             />

@@ -8,14 +8,11 @@ import { useRegisterPlace } from "./RegisterPlaceContext";
 import styles from "../../css/typeLoc.module.css";
 
 const TypeLoc_Place = () => {
-  const { setNextStepOne } = useRegisterPlace();
   const { control } = useFormContext();
   const { field } = useController({
     name: "place_type",
     control,
   });
-
-  // onChange={() => setNextStepOne(false)}
 
   return (
     <div className={`layout_flexCol ${styles.typeLoc_pod}`}>

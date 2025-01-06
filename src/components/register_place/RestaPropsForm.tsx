@@ -17,18 +17,20 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 import BaseFeatures from "./BaseFeatures";
 
-import { registerLodgeSchema } from "../../types/scrTypes";
+import { restaPropsFormSchema } from "../../types/scrTypes";
 
 import styles from "../../css/registerPlace.module.css";
 import RestaFeatures from "./RestaFeatures";
 
-const RegisterResta = () => {
-  const { placeStore, dispatch } = useRegisterPlace();
+const RestaPropsForm = () => {
+  const { placePropsStore, dispatchPlacePropsStore, setNextStep } = useRegisterPlace();
 
   const methodsResta = useForm({
-    defaultValues: placeStore.lodge,
-    resolver: zodResolver(registerLodgeSchema),
+    defaultValues: placePropsStore.resta,
+    resolver: zodResolver(restaPropsFormSchema),
   });
+
+  console.log(methodsResta.formState.errors);
 
   renderCounter++;
 
@@ -36,13 +38,12 @@ const RegisterResta = () => {
     <div className={`${styles.registerPlace_box}`}>
       <FormProvider {...methodsResta}>
         <form
-          onSubmit={methodsResta.handleSubmit((d) => {
-            console.log(parseFloat(d.latitude));
-            console.log(parseFloat(d.longitude));
-            console.log(d);
-            dispatch({
+          onSubmit={methodsResta.handleSubmit((restaValues) => {
+            setNextStep(true);
+            dispatchPlacePropsStore({
+              key: "placePropsStore",
               type: "resta",
-              formValues: d,
+              formValues: restaValues,
             });
           })}
         >
@@ -136,4 +137,4 @@ const RegisterResta = () => {
   );
 };
 
-export default RegisterResta;
+export default RestaPropsForm;

@@ -27,17 +27,17 @@ import styles from "../../css/registerPlace.module.css";
 
 let stepUnoCounter = 0;
 
-const RegisterPlaceStepOne = () => {
+const PlacePropsStepOne = () => {
   const {
-    placeStore,
-    dispatch,
+    placePropsStore,
+    dispatchPlacePropsStore,
     activePlaceType,
     isOnNextStep,
     setNextStep,
   } = useRegisterPlace();
 
   const methodsTypeLoc = useForm({
-    defaultValues: placeStore.type_loc,
+    defaultValues: placePropsStore.type_loc,
     resolver: zodResolver(typeLocSchema),
   });
 
@@ -48,7 +48,7 @@ const RegisterPlaceStepOne = () => {
   stepUnoCounter++;
 
   React.useEffect(() => {
-    if (!_.isEqual(watchTypeLoc, placeStore.type_loc)) {
+    if (!_.isEqual(watchTypeLoc, placePropsStore.type_loc)) {
       setNextStep(false);
     }
   }, [watchTypeLoc]);
@@ -61,8 +61,8 @@ const RegisterPlaceStepOne = () => {
             console.log(d);
             console.log(isOnNextStep);
             setNextStep(true);
-            dispatch({
-              key: "placeStore",
+            dispatchPlacePropsStore({
+              key: "placePropsStore",
               type: "type_loc",
               formValues: d,
             });
@@ -96,11 +96,11 @@ const RegisterPlaceStepOne = () => {
                 // color="#F000D0"
                 // disabled={
                 //   (isOnNextStep ? true : false) ||
-                //   _.isEqual(watchType, placeStore.type_loc)
+                //   _.isEqual(watchType, placePropsStore.type_loc)
                 //     ? true
                 //     : false
                 // }
-                // disabled={!_.isEqual(watchTypeLoc, placeStore.type_loc)}
+                // disabled={!_.isEqual(watchTypeLoc, placePropsStore.type_loc)}
                 variant="outlined"
                 sx={{
                   color: "F000D0",
@@ -120,4 +120,4 @@ const RegisterPlaceStepOne = () => {
   );
 };
 
-export default RegisterPlaceStepOne;
+export default PlacePropsStepOne;

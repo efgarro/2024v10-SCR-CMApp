@@ -20,17 +20,17 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 import BaseFeatures from "./BaseFeatures";
 
-import { registerLodgeSchema, ILodge } from "../../types/scrTypes";
+import { lodgePropsFormSchema, ILodge } from "../../types/scrTypes";
 
 import styles from "../../css/registerPlace.module.css";
 import LodgeFeatures from "./LodgeFeatures";
 
-const RegisterLodge = () => {
-  const { placeStore, dispatch, setNextStep } = useRegisterPlace();
+const LodgePropsForm = () => {
+  const { placePropsStore, dispatchPlacePropsStore, setNextStep } = useRegisterPlace();
 
   const methodsLodge = useForm({
-    defaultValues: placeStore.lodge,
-    resolver: zodResolver(registerLodgeSchema),
+    defaultValues: placePropsStore.lodge,
+    resolver: zodResolver(lodgePropsFormSchema),
   });
 
   const watchLodge = useWatch({
@@ -38,7 +38,7 @@ const RegisterLodge = () => {
   }) as ILodge;
 
   React.useEffect(() => {
-    if (!_.isEqual(watchLodge, placeStore.lodge)) {
+    if (!_.isEqual(watchLodge, placePropsStore.lodge)) {
       setNextStep(false);
     }
   }, [watchLodge]);
@@ -50,17 +50,11 @@ const RegisterLodge = () => {
     <div className={`${styles.registerPlace_box}`}>
       <FormProvider {...methodsLodge}>
         <form
-          onSubmit={methodsLodge.handleSubmit((d) => {
-            const lodgeValues = {
-              ...d,
-              place_id: uuidv7(),
-              image_set_id: uuidv7(),
-              lodge_id: uuidv7(),
-            };
+          onSubmit={methodsLodge.handleSubmit((lodgeValues) => {
             console.log(lodgeValues);
             setNextStep(true);
-            dispatch({
-              key: "placeStore",
+            dispatchPlacePropsStore({
+              key: "placePropsStore",
               type: "lodge",
               formValues: lodgeValues,
             });
@@ -155,4 +149,4 @@ const RegisterLodge = () => {
   );
 };
 
-export default RegisterLodge;
+export default LodgePropsForm;
