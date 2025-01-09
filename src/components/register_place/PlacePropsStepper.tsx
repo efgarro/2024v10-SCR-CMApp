@@ -37,8 +37,12 @@ function getStepContent(step: number) {
 const PlacePropsStepper = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const { defaultPlacePropsStore, dispatchPlacePropsStore, isOnNextStep, setNextStep } =
-    useRegisterPlace();
+  const {
+    defaultPlacePropsStore,
+    dispatchPlacePropsStore,
+    isOnNextStep,
+    setNextStep,
+  } = useRegisterPlace();
 
   const handleNext = () => {
     console.log(activeStep);

@@ -13,11 +13,12 @@ import Dashboard from "./layouts/Dashboard";
 import AboutPage from "./components/AboutPage";
 import Company from "./components/Company";
 import NotFound from "./components/NotFound";
-import RegisterPlace from "./components/register_place/PlacePropsStepper";
+import RegisterPlace from "./components/register_place/RegisterPlace";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { customTheme } from "./css/customTheme";
 import "./css/styles.css";
+import AddImagesStepper from "./components/register_place/AddImagesStepper";
 
 const CMApp = () => {
   const isAuthenticated = () => {
@@ -26,57 +27,67 @@ const CMApp = () => {
   };
   return (
     <ThemeProvider theme={customTheme}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AuthLayout />}>
-            <Route path="auth" element={<AuthChoices />} />
-            <Route path="auth/confirm/signup" element={<ConfirmSignUpForm />} />
+      <RegisterPlaceProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<AuthLayout />}>
+              <Route path="auth" element={<AuthChoices />} />
+              <Route
+                path="auth/confirm/signup"
+                element={<ConfirmSignUpForm />}
+              />
+              <Route
+                path="auth/confirm/reset"
+                element={<ConfirmResetPasswordForm />}
+              />
+            </Route>
             <Route
-              path="auth/confirm/reset"
-              element={<ConfirmResetPasswordForm />}
-            />
-          </Route>
-          <Route
-            path="/"
-            element={
-              isAuthenticated() ? (
-                <Dashboard />
-              ) : (
-                <Navigate replace to="/auth" />
-              )
-            }
-          >
-            <Route
-              index
+              path="/"
               element={
-                <RegisterPlaceProvider>
-                  <PlacePropsStepper />
-                </RegisterPlaceProvider>
+                isAuthenticated() ? (
+                  <Dashboard />
+                ) : (
+                  <Navigate replace to="/auth" />
+                )
               }
-            />
-            <Route
-              path="register/places"
-              element={
-                <RegisterPlaceProvider>
-                  <PlacePropsStepper />
-                </RegisterPlaceProvider>
-              }
-            />
-
-            <Route
-              path="register/articles"
-              element={<div>register/articles</div>}
-            />
-            <Route path="manage/places" element={<div>manage/places</div>} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="about" element={<AboutPage />} />
-          <Route path="company" element={<Company />} />
-          {/* <Route path="/error" element={<ErrorPage />} /> */}
-        </Routes>
-      </BrowserRouter>
+            >
+              <Route index element={<Navigate to="register/place" replace />} />
+              <Route path="register/place" element={<RegisterPlace />} />
+              <Route
+                path="register/place/images"
+                element={<AddImagesStepper />}
+              ></Route>
+              <Route
+                path="register/place/props"
+                element={<PlacePropsStepper />}
+              ></Route>
+              <Route
+                path="register/articles"
+                element={<div>register/articles</div>}
+              />
+              <Route path="manage/places" element={<div>manage/places</div>} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route path="about" element={<AboutPage />} />
+            <Route path="company" element={<Company />} />
+            {/* <Route path="/error" element={<ErrorPage />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </RegisterPlaceProvider>
     </ThemeProvider>
   );
 };
 
 export default CMApp;
+
+{
+  /* <Route
+  index
+  element={
+    <RegisterPlaceProvider>
+      <RegisterPlace />
+    </RegisterPlaceProvider>
+  }
+/>
+<Route path="register/places" element={<RegisterPlace />} /> */
+}
