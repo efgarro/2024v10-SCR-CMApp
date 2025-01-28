@@ -37,7 +37,7 @@ const ConfirmSignUp = () => {
 
   return (
     <React.Fragment>
-      <div className={`layout_flexCol ${styles.authForm_header}`}>
+      <div className={`core_flexCol ${styles.authForm_header}`}>
         <AccountBox sx={{ color: "#F000D0" }} />
         {/* <Typography variant="h6" align="center">
           Confirm Sign Up
@@ -45,14 +45,14 @@ const ConfirmSignUp = () => {
       </div>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(handleConfirmSignUp)}>
-          <div className={`layout_flexCol ${styles.authForm_input}`}>
+          <div className={`core_flexCol ${styles.authForm_input}`}>
             <InputEmail />
             <InputConfirmationCode />
             <Button type="submit" variant="contained">
               Confirm Sign Up
             </Button>
           </div>
-          <div className={`layout_flexRow ${styles.authForm_pod}`}>
+          <div className={`core_flexRow ${styles.authForm_pod}`}>
             <Button
               sx={{ textTransform: "none", fontSize: 12 }}
               color="error"

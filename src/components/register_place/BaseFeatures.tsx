@@ -34,7 +34,7 @@ const BaseFeatures = () => {
         variant="outlined"
         margin="normal"
       />
-      <div className={`layout_flexRow ${styles.properties_podX}`}>
+      <div className={`core_flexRow ${styles.properties_podX}`}>
         <TextField
           {...latitude}
           error={errors?.latitude ? true : false}
@@ -52,7 +52,7 @@ const BaseFeatures = () => {
         />
       </div>
       {/* <div className={`${styles.properties_box}`}> */}
-        <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+        <div className={`core_flexCol core_wrapperSm`}>
           <List>
             {errors?.name && (
               <ListItem>

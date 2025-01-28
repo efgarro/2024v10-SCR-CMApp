@@ -15,7 +15,7 @@ const TypeLoc_Place = () => {
   });
 
   return (
-    <div className={`layout_flexCol ${styles.typeLoc_pod}`}>
+    <div className={`core_flexCol ${styles.typeLoc_pod}`}>
       <Typography variant="h6">Place Type</Typography>
       <RadioGroup  {...field}>
         <FormControlLabel value="lodge" control={<Radio />} label="Lodging" />

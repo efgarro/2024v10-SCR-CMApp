@@ -29,7 +29,7 @@ const RestaFeatures = () => {
 
   return (
     <React.Fragment>
-      <div className={`layout_flexRow ${styles.phoneAttr}`}>
+      <div className={`core_flexRow ${styles.phoneAttr}`}>
         <div className="phoneAttr_toogle">
           <FormControlLabel
             control={
@@ -46,7 +46,7 @@ const RestaFeatures = () => {
           </div>
         ) : undefined}
       </div>
-      <div className={`layout_flexRow ${styles.phoneAttr}`}>
+      <div className={`core_flexRow ${styles.phoneAttr}`}>
         <div className="phoneAttr_toogle">
           <FormControlLabel
             control={
@@ -61,7 +61,7 @@ const RestaFeatures = () => {
           </div>
         ) : undefined}
       </div>
-      <div className={`layout_flexRow ${styles.phoneAttr}`}>
+      <div className={`core_flexRow ${styles.phoneAttr}`}>
         <div className="phoneAttr_toogle">
           <FormControlLabel
             control={<Switch onChange={() => toggleMobileTwo()} />}

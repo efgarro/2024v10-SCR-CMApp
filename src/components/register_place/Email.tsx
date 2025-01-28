@@ -16,7 +16,7 @@ const Email = () => {
   });
 
   return (
-    <div className={`layout_flexRow ${styles.properties_podX}`}>
+    <div className={`core_flexRow ${styles.properties_podX}`}>
       <TextField
         {...email}
         error={errors?.url ? true : false}

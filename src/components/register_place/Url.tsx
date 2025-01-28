@@ -16,7 +16,7 @@ const Url = () => {
   });
 
   return (
-    <div className={`layout_flexRow ${styles.properties_podX}`}>
+    <div className={`core_flexRow ${styles.properties_podX}`}>
       <TextField
         {...url}
         error={errors?.url ? true : false}

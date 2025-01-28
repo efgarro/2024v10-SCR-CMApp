@@ -70,9 +70,9 @@ const PlacePropsStepper = () => {
   const steps = ["Type and Location", "Features", "Review & Save to Database"];
 
   return (
-    <div className="layout_stepperWrapper">
+    <div className="core_wrapperMd">
       <Paper
-        className="layout_flexCol"
+        className="core_flexCol"
         sx={{
           justifyContent: "center",
           mb: "2rem",

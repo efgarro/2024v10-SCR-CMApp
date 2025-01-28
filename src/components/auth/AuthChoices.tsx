@@ -19,7 +19,7 @@ const AuthChoices = () => {
   return (
     <React.Fragment>
       {authChoices[activeChoice as keyof typeof authChoices]}
-      <div className={`layout_flexRow ${styles.authForm_pod}`}>
+      <div className={`core_flexRow ${styles.authForm_pod}`}>
         {activeChoice !== 1 && (
           <Button
             sx={{ textTransform: "none", fontSize: 12 }}

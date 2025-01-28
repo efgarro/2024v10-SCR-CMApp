@@ -12,13 +12,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="layout_screen layout_flexCol">
+    <div className="core_screen core_flexCol">
       <Header />
 
-      <div className="layout_wrapper layout_flexRow">
-        {/* <div className="layout_sidebar"></div> */}
+      <div className="core_wrapper core_flexRow">
+        {/* <div className="core_sidebar"></div> */}
         <Sidebar />
-        <div className="layout_contentBox">
+        <div className="core_contentBox">
           <Outlet />
         </div>
       </div>

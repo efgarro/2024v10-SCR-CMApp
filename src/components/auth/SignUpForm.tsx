@@ -45,7 +45,7 @@ const SignUpForm = () => {
 
   return (
     <React.Fragment>
-      <div className={`layout_flexCol ${styles.authForm_header}`}>
+      <div className={`core_flexCol ${styles.authForm_header}`}>
         <AccountBox sx={{ color: "#F000D0" }} />
         <Typography variant="h6" align="center">
           Sign Up
@@ -53,7 +53,7 @@ const SignUpForm = () => {
       </div>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(handleSignUp)}>
-          <div className={`layout_flexCol ${styles.authForm_input}`}>
+          <div className={`core_flexCol ${styles.authForm_input}`}>
             <InputEmail />
             <InputPassword />
             <InputConfirmPassword />

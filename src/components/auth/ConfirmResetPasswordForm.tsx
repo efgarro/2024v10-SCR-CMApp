@@ -42,7 +42,7 @@ const ConfirmResetPasswordForm = () => {
 
   return (
     <React.Fragment>
-      <div className={`layout_flexCol ${styles.authForm_header}`}>
+      <div className={`core_flexCol ${styles.authForm_header}`}>
         <AccountBox sx={{ color: "#F000D0" }} />
         {/* <Typography variant="h6" align="center">
           Confirm Reset Password
@@ -50,7 +50,7 @@ const ConfirmResetPasswordForm = () => {
       </div>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(handleForgotPassword)}>
-          <div className={`layout_flexCol ${styles.authForm_input}`}>
+          <div className={`core_flexCol ${styles.authForm_input}`}>
             <InputEmail />
             <InputNewPassword />
             <InputConfirmationCode />

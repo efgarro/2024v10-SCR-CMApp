@@ -13,7 +13,7 @@ const TypeLoc_Region = () => {
   });
 
   return (
-    <div className={`layout_flexCol ${styles.typeLoc_pod}`}>
+    <div className={`core_flexCol ${styles.typeLoc_pod}`}>
       <Typography variant="h6">Region</Typography>
       <RadioGroup
         {...field}

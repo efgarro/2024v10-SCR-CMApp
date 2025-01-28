@@ -48,7 +48,7 @@ const RestaPropsForm = () => {
           })}
         >
           <Paper
-            className="layout_flexCol"
+            className="core_flexCol"
             sx={{
               justifyContent: "center",
               my: "2rem",
@@ -63,12 +63,12 @@ const RestaPropsForm = () => {
             </Typography>
           </Paper>
           <div className={`${styles.properties_box}`}>
-            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+            <div className={`core_flexCol core_wrapperSm`}>
               <BaseFeatures />
             </div>
           </div>
           <Paper
-            className="layout_flexCol"
+            className="core_flexCol"
             sx={{
               justifyContent: "center",
               my: "2rem",
@@ -83,12 +83,12 @@ const RestaPropsForm = () => {
             </Typography>
           </Paper>
           <div className={`${styles.properties_box}`}>
-            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+            <div className={`core_flexCol core_wrapperSm`}>
               <RestaFeatures />
             </div>
           </div>
           <div className={`${styles.properties_box}`}>
-            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+            <div className={`core_flexCol core_wrapperSm`}>
               <List>
                 {/* {methodsResta.formState.errors?.mobile && (
                     <ListItem>
@@ -114,7 +114,7 @@ const RestaPropsForm = () => {
             </div>
           </div>
           <div className={`${styles.properties_box}`}>
-            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+            <div className={`core_flexCol core_wrapperSm`}>
               <Button
                 type="submit"
                 // color="#F000D0"

@@ -5,9 +5,9 @@ import styles from "../../css/auth.module.css";
 const AuthLayout = () => {
   return (
     <React.Fragment>
-      <div className={`${styles.authForm_wrapper}`}>
-        <div className={`layout_flexCol ${styles.authForm_case}`}>
-          <div className={`layout_flexCol ${styles.authForm_box}`}>
+      <div className={`core_wrapperSm ${styles.authForm_wrapperSm}`}>
+        <div className={`core_flexCol ${styles.authForm_case}`}>
+          <div className={`core_flexCol ${styles.authForm_box}`}>
             <Outlet />
           </div>
         </div>

@@ -69,7 +69,7 @@ const PlacePropsStepOne = () => {
           })}
         >
           <Paper
-            className="layout_flexCol"
+            className="core_flexCol"
             sx={{
               justifyContent: "center",
               mb: "2rem",
@@ -83,14 +83,14 @@ const PlacePropsStepOne = () => {
               Place Type and Location
             </Typography>
           </Paper>
-          <div className={`layout_flexRow ${styles.typeLoc_box}`}>
+          <div className={`core_flexRow ${styles.typeLoc_box}`}>
             <TypeLoc_Place />
             <TypeLoc_Region />
             <TypeLoc_Hub />
           </div>
 
           <div className={`${styles.properties_box}`}>
-            <div className={`layout_flexCol ${styles.properties_wrapper}`}>
+            <div className={`core_flexCol core_wrapperSm`}>
               <Button
                 type="submit"
                 // color="#F000D0"

@@ -1,11 +1,10 @@
-.authForm_wrapper {
+.authForm_wrapperSm {
   background: #b9baa3;
-  width: clamp(20rem, 85vw, 33.75rem);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
-  padding-right: clamp(1.09rem, 1rem + 0.47vw, 1.33rem);
-  height: 100vh;
+  height: 100vh !important;
+}
+
+.authForm_bg_b9baa3 {
+  background: #b9baa3;
 }
 
 .authForm_case {

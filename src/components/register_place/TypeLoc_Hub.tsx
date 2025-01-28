@@ -18,7 +18,7 @@ const TypeLoc_Hub = () => {
   const selectedRegion = watch("region");
 
   return (
-    <div className={`layout_flexCol ${styles.typeLoc_pod}`}>
+    <div className={`core_flexCol ${styles.typeLoc_pod}`}>
       <Typography variant="h6">Hub</Typography>
       <RadioGroup {...field}>
         <FormControlLabel

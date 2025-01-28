@@ -13,9 +13,9 @@ const RegisterPlace = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="layout_stepperWrapper">
+    <div className="core_wrapperMd">
       <Paper
-        className="layout_flexCol"
+        className="core_flexCol"
         sx={{
           justifyContent: "center",
           mb: "2rem",
@@ -29,7 +29,7 @@ const RegisterPlace = () => {
           Register Place
         </Typography>
       </Paper>
-      <div className={`layout_flexRow ${styles.properties_podX}`}>
+      <div className={`core_flexRow ${styles.properties_podX}`}>
         <Button
           variant="contained"
           size="large"

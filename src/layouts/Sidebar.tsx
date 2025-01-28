@@ -14,7 +14,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="layout_sidebar layout_flexCol">
+    <div className="core_sidebar core_flexCol">
       <Button
         variant="text"
         // color="primary"
