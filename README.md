@@ -13,7 +13,8 @@ This is the Content Management Client to register and update places, articles, u
 - AWS SDK for JS v3 / AWS Cognito Auth
 - React Hook Form / Zod Schema Validation / React Select / React International Phone /    google-libphonenumber
 - Uppy File Uploader
-- React DnD / Immer for Inmutable State
+- DnD-Kit
+- Immer for Inmutable State (if needed)
 - AWS SDK / S3-Client / Cloudflare R2 Object Storage
 - ExifReader
 - React Query
@@ -55,13 +56,13 @@ git config --list --show-origin
 #### Layout Containers Classes
 
 ```sh
-.layout_screen
-.layout_container
-.layout_wrapper
-.layout_box
-.layout_wrapperOne, .layout_wrapperTwo, etc.
-.layout_flex-row
-.layout_flex-col
+.core_screen
+.core_container
+.core_box
+.core_wrapper
+.core_wrapperSm, .core_wrapperMd, etc.
+.core_flexRow
+.core_flexCol
 ```
 
 #### UI Components / Modules Classes

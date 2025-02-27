@@ -23,11 +23,11 @@ import PlacePropsSummary from "./PlacePropsSummary";
 
 function getStepContent(step: number) {
   switch (step) {
-    case 0:
-      return <PlacePropsStepOne />; // TypeLocForm;
     case 1:
-      return <PlacePropsStepTwo />; // FeaturesForm;
+      return <PlacePropsStepOne />; // TypeLocForm;
     case 2:
+      return <PlacePropsStepTwo />; // FeaturesForm;
+    case 3:
       return <PlacePropsStepThree />; // Review & Submit />;
     default:
       throw new Error("Unknown step");
@@ -35,7 +35,7 @@ function getStepContent(step: number) {
 }
 
 const PlacePropsStepper = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(1);
 
   const {
     defaultPlacePropsStore,
@@ -46,17 +46,17 @@ const PlacePropsStepper = () => {
 
   const handleNext = () => {
     console.log(activeStep);
-    if (activeStep === 0) {
+    if (activeStep === 1) {
       setActiveStep(activeStep + 1);
       setNextStep(false);
-    } else if (activeStep === 1) {
-      setActiveStep(activeStep + 1);
     } else if (activeStep === 2) {
+      setActiveStep(activeStep + 1);
+    } else if (activeStep === 3) {
       setTimeout(() => {
         setActiveStep(activeStep + 1);
       }, 2000);
       dispatchPlacePropsStore({
-        key: "placeStore",
+        key: "placePropsStore",
         type: "reset",
         formValues: defaultPlacePropsStore,
       });
@@ -113,7 +113,7 @@ const PlacePropsStepper = () => {
         ))}
       </Stepper>
       <p>{stepperCounter}</p>
-      {activeStep === steps.length ? (
+      {activeStep === steps.length + 1 ? (
         <PlacePropsSummary />
       ) : (
         <React.Fragment>
@@ -122,7 +122,7 @@ const PlacePropsStepper = () => {
             sx={{
               display: "flex",
               flexDirection: { xs: "column-reverse", sm: "row" },
-              justifyContent: activeStep !== 0 ? "space-between" : "flex-end",
+              justifyContent: activeStep !== 1 ? "space-between" : "flex-end",
               alignItems: "end",
               flexGrow: 1,
               gap: 1,
@@ -131,7 +131,7 @@ const PlacePropsStepper = () => {
               mb: "60px",
             }}
           >
-            {activeStep !== 0 && (
+            {activeStep !== 1 && (
               <Button
                 startIcon={<ChevronLeftRounded />}
                 onClick={handleBack}
@@ -144,7 +144,7 @@ const PlacePropsStepper = () => {
                 Previous
               </Button>
             )}
-            {activeStep !== 0 && (
+            {activeStep !== 1 && (
               <Button
                 startIcon={<ChevronLeftRounded />}
                 onClick={handleBack}
@@ -168,9 +168,7 @@ const PlacePropsStepper = () => {
                 mt: "1rem",
               }}
             >
-              {activeStep === steps.length - 1
-                ? "Save to Cloud Database"
-                : "Next"}
+              {activeStep === steps.length ? "Save to Cloud Database" : "Next"}
             </Button>
           </Box>
         </React.Fragment>

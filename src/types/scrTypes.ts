@@ -172,13 +172,13 @@ interface IWebContacts {
   url: string;
 }
 
-// interface IPriceSelect {
-//   value: string;
-//   label: string;
-// }
+export interface IPriceSelect {
+  value: string;
+  label: string;
+}
 
 interface IPricing {
-  price_range: { value: string; label: string };
+  price_range: IPriceSelect;
 }
 
 export interface ILodge
@@ -210,6 +210,11 @@ export type IAction = {
   key?: string;
   // initialValue?: T;
 };
+
+export interface ILodgePlaceSummary extends IType_Loc, ILodge {
+  place_id: string;
+  // price_rangeValue: string;
+}
 
 export interface IRegisterPlaceContext {
   defaultPlacePropsStore: IPlacePropsStore;

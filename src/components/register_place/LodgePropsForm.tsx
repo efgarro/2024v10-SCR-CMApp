@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as _ from "lodash";
 import { v7 as uuidv7 } from "uuid";
 
+import { flattenObject } from "../../utils/flattenObj";
+
 import { useRegisterPlace } from "./RegisterPlaceContext";
 
 import {
@@ -26,7 +28,8 @@ import styles from "../../css/registerPlace.module.css";
 import LodgeFeatures from "./LodgeFeatures";
 
 const LodgePropsForm = () => {
-  const { placePropsStore, dispatchPlacePropsStore, setNextStep } = useRegisterPlace();
+  const { placePropsStore, dispatchPlacePropsStore, setNextStep } =
+    useRegisterPlace();
 
   const methodsLodge = useForm({
     defaultValues: placePropsStore.lodge,
@@ -51,7 +54,8 @@ const LodgePropsForm = () => {
       <FormProvider {...methodsLodge}>
         <form
           onSubmit={methodsLodge.handleSubmit((lodgeValues) => {
-            console.log(lodgeValues);
+            const flattenFormValues = flattenObject(lodgeValues);
+            console.log(flattenFormValues);
             setNextStep(true);
             dispatchPlacePropsStore({
               key: "placePropsStore",
