@@ -27,20 +27,15 @@ const getPlaceFeatures = (placePropsStore: IPlacePropsStore) => {
 
 const PlacePropsStepThree = () => {
   const { placePropsStore } = useRegisterPlace();
-  const addPlace = useAddPlace()
+  const addPlace = useAddPlace();
 
   const placeFeatures = getPlaceFeatures(placePropsStore);
 
   const placeSummary = flattenObject({
-    place_id: uuidv7(),
     ...placePropsStore.type_loc,
     ...placeFeatures,
-    // price_range: placeFeatures.price_range.label,
   });
-  // console.log(placeSummary);
 
-  // const keys = Object.keys(placeSummary);
-  // console.log(keys);
   return (
     <>
       <Table>
@@ -64,7 +59,9 @@ const PlacePropsStepThree = () => {
           ))}
         </TableBody>
       </Table>
-      <button onClick={() => addPlace.mutate(placeSummary)}>Save to Cloud DB</button>
+      <button onClick={() => addPlace.mutate(placeSummary)}>
+        Save to Cloud DB
+      </button>
     </>
   );
 };
