@@ -13,8 +13,8 @@ const BaseFeatures = () => {
   } = useFormContext();
   const { field: name } = useController({ name: "name" });
   const { field: description } = useController({ name: "description" });
-  const { field: latitude } = useController({ name: "latitude" });
-  const { field: longitude } = useController({ name: "longitude" });
+  // const { field: latitude } = useController({ name: "latitude" });
+  // const { field: longitude } = useController({ name: "longitude" });
 
   //   console.log(errors.latitude);
 
@@ -34,62 +34,42 @@ const BaseFeatures = () => {
         variant="outlined"
         margin="normal"
       />
-      <div className={`core_flexRow ${styles.properties_podX}`}>
-        <TextField
-          {...latitude}
-          error={errors?.latitude ? true : false}
-          label="Latitude"
-          variant="outlined"
-          margin="normal"
-        />
-        {/* {errors?.latitude && <p role="alert">Error!!</p>} */}
-        <TextField
-          {...longitude}
-          error={errors?.longitude ? true : false}
-          label="Longitude"
-          variant="outlined"
-          margin="normal"
-        />
+      <div className={`core_flexCol core_wrapperSm`}>
+        <List>
+          {errors?.name && (
+            <ListItem>
+              <ListItemIcon>
+                <ErrorOutlineIcon />
+              </ListItemIcon>
+              <Typography>{errors.name.message?.toString()}</Typography>
+            </ListItem>
+          )}
+          {errors?.description && (
+            <ListItem>
+              <ListItemIcon>
+                <ErrorOutlineIcon />
+              </ListItemIcon>
+              <Typography>{errors.description.message?.toString()}</Typography>
+            </ListItem>
+          )}
+          {errors?.latitude && (
+            <ListItem>
+              <ListItemIcon>
+                <ErrorOutlineIcon />
+              </ListItemIcon>
+              <Typography>{errors.latitude.message?.toString()}</Typography>
+            </ListItem>
+          )}
+          {errors?.longitude && (
+            <ListItem>
+              <ListItemIcon>
+                <ErrorOutlineIcon />
+              </ListItemIcon>
+              <Typography>{errors.longitude.message?.toString()}</Typography>
+            </ListItem>
+          )}
+        </List>
       </div>
-      {/* <div className={`${styles.properties_box}`}> */}
-        <div className={`core_flexCol core_wrapperSm`}>
-          <List>
-            {errors?.name && (
-              <ListItem>
-                <ListItemIcon>
-                  <ErrorOutlineIcon />
-                </ListItemIcon>
-                <Typography>{errors.name.message?.toString()}</Typography>
-              </ListItem>
-            )}
-            {errors?.description && (
-              <ListItem>
-                <ListItemIcon>
-                  <ErrorOutlineIcon />
-                </ListItemIcon>
-                <Typography>
-                  {errors.description.message?.toString()}
-                </Typography>
-              </ListItem>
-            )}
-            {errors?.latitude && (
-              <ListItem>
-                <ListItemIcon>
-                  <ErrorOutlineIcon />
-                </ListItemIcon>
-                <Typography>{errors.latitude.message?.toString()}</Typography>
-              </ListItem>
-            )}
-            {errors?.longitude && (
-              <ListItem>
-                <ListItemIcon>
-                  <ErrorOutlineIcon />
-                </ListItemIcon>
-                <Typography>{errors.longitude.message?.toString()}</Typography>
-              </ListItem>
-            )}
-          </List>
-        </div>
       {/* </div> */}
     </>
   );

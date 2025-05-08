@@ -21,6 +21,7 @@ import {
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 import BaseFeatures from "./BaseFeatures";
+import Geolocation from "./Geolocation";
 
 import { lodgePropsFormSchema, ILodge } from "../../types/scrTypes";
 
@@ -82,6 +83,26 @@ const LodgePropsForm = () => {
           <div className={`${styles.properties_box}`}>
             <div className={`core_flexCol core_wrapperSm`}>
               <BaseFeatures />
+            </div>
+          </div>
+          <Paper
+            className="core_flexCol"
+            sx={{
+              justifyContent: "center",
+              my: "2rem",
+              height: 50,
+              background: "#a4539935",
+            }}
+            square
+            elevation={0}
+          >
+            <Typography sx={{ pl: "2rem" }} variant="h6">
+              GeoLocation
+            </Typography>
+          </Paper>
+          <div className={`${styles.properties_box}`}>
+            <div className={`core_flexCol core_wrapperSm`}>
+              <Geolocation />
             </div>
           </div>
           <Paper
