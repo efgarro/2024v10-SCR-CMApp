@@ -35,6 +35,7 @@ const Sidebar = () => {
           <MenuList sx={{ pt: 0, ml: "0.5rem" }}>
             <MenuItem onClick={() => navigate("/register/place/props")}>Properties and Features</MenuItem>
             <MenuItem onClick={() => navigate("/register/place/images")}>Add Images</MenuItem>
+            <MenuItem onClick={() => navigate("/register/place/images/step_two")}>Post Queue</MenuItem>
           </MenuList>
         </Paper>
       </Paper>

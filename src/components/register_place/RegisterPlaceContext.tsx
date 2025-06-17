@@ -2,6 +2,7 @@ import * as React from "react";
 import { IRegisterPlaceContext } from "../../types/scrTypes";
 import useReducerPersist from "../../hooks/useReducerPersist";
 import placePropsStoreReducer from "../../utils/placePropsStoreReducer";
+import placeToEditStoreReducer from "../../utils/placeToEdityStoreReducer";
 
 let RegisterPlaceContext = React.createContext<IRegisterPlaceContext>(null!);
 
@@ -47,6 +48,12 @@ const defaultPlacePropsStore = {
   },
 };
 
+const defaultPlaceToEditStore = {
+  place_id: "",
+  image_set_id: "",
+  hub: "",
+  place_type: "",
+};
 export function RegisterPlaceProvider({
   children,
 }: {
@@ -61,11 +68,11 @@ export function RegisterPlaceProvider({
     defaultPlacePropsStore,
     placePropsStoreReducer
   );
-  // const [addImagesStore, dispatchAddImagesStore] = useReducerPersist(
-  //   "addImagesStore",
-  //   defaultAddImagesStore,
-  //   addImagesStoreReducer
-  // );
+  const [placeToEditStore, dispatchPlaceToEditStore] = useReducerPersist(
+    "placeToEditStore",
+    defaultPlaceToEditStore,
+    placeToEditStoreReducer
+  );
   const [activePlaceType, setActivePlaceType] = React.useState(
     placePropsStore.type_loc.place_type
   );

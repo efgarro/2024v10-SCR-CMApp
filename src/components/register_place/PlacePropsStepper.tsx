@@ -2,6 +2,8 @@ import * as React from "react";
 import { useRegisterPlace } from "./RegisterPlaceContext";
 import * as _ from "lodash";
 
+import { Navigate } from "react-router-dom";
+
 import {
   Paper,
   Stepper,

@@ -1,10 +1,4 @@
-const trimAfterPoint = (str: string) => {
-  const parts = str.split(".");
-  const integerPart = parts[0];
-  const decimalPart = parts[1].slice(0, 6); // Take only the first 7 characters
-
-  return integerPart + "." + decimalPart;
-};
+import { trimAfterPoint } from "./trimAfterPoint";
 
 const convertLatLngString = (latLongString: string) => {
   const latlngArr = latLongString.split(",").map((numStr) => {

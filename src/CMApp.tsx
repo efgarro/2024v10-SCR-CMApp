@@ -67,7 +67,7 @@ const CMApp = () => {
                   element={<PlacePropsStepper />}
                 ></Route>
                 <Route
-                  path="register/place/images"
+                  path="register/place/images/:step?"
                   element={<AddImagesStepper />}
                 ></Route>
                 <Route

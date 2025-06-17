@@ -3,6 +3,7 @@ import { isPhoneValid } from "../utils/phoneNumberUtil";
 // import validator from "validator";
 import isURL from "validator/lib/isURL";
 import { UUIDVersion } from "validator";
+import { UUIDTypes } from "uuid";
 
 export const authSchema = z.object({
   email: z.string().email(),
@@ -84,7 +85,7 @@ const basePropsSchema = {
   latitude: z
     .string()
     .regex(
-      /^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/,
+      /^(\+|-)?(?:90(?:(?:\.0{1,7})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,7})?))$/,
       {
         message:
           "Invalid LATITUDE format. Please review that decimals are 6 max and that no alpha characters are included",
@@ -93,7 +94,7 @@ const basePropsSchema = {
   longitude: z
     .string()
     .regex(
-      /^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/,
+      /^(\+|-)?(?:180(?:(?:\.0{1,7})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,7})?))$/,
       {
         message:
           "Invalid LONGITUDE format. Please review that decimals are 6 max and that no alpha characters are included",
@@ -204,12 +205,23 @@ export interface IPlacePropsStore {
   resta: IResta;
 }
 
-export type IAction = {
+export interface IPlacePropsAction {
   type: string;
   formValues: any;
   key?: string;
-  // initialValue?: T;
-};
+}
+
+export interface IPlaceToEditStore {
+  place_id: string;
+  image_set_id: string;
+  hub: string;
+  place_type: string;
+}
+
+export interface IPlaceToEditAction {
+  type: string;
+  placeToEditValues: IPlaceToEditStore;
+}
 
 export interface ILodgePlaceSummary extends IType_Loc, ILodge {
   place_id: string;
@@ -219,7 +231,7 @@ export interface ILodgePlaceSummary extends IType_Loc, ILodge {
 export interface IRegisterPlaceContext {
   defaultPlacePropsStore: IPlacePropsStore;
   placePropsStore: IPlacePropsStore;
-  dispatchPlacePropsStore: React.Dispatch<IAction>;
+  dispatchPlacePropsStore: React.Dispatch<IPlacePropsAction>;
   activePlaceType: string;
   setActivePlaceType: React.Dispatch<React.SetStateAction<string>>;
   isOnNextStep: boolean;

@@ -1,6 +1,6 @@
-import { IPlacePropsStore, IAction, IType_Loc } from "../types/scrTypes";
+import { IPlacePropsStore, IPlacePropsAction, IType_Loc } from "../types/scrTypes";
 
-const formValuesReducer = (placeStore: IPlacePropsStore, action: IAction) => {
+const placePropsStoreReducer = (placeStore: IPlacePropsStore, action: IPlacePropsAction) => {
   let newPlaceStore: IPlacePropsStore;
   switch (action.type) {
     case "type_loc":
@@ -36,4 +36,4 @@ const formValuesReducer = (placeStore: IPlacePropsStore, action: IAction) => {
   }
 };
 
-export default formValuesReducer;
+export default placePropsStoreReducer;

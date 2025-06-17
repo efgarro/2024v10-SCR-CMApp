@@ -3,8 +3,8 @@ import * as React from "react";
 import { TextField, Radio, Button, IconButton } from "@mui/material";
 
 import { useController, useFormContext } from "react-hook-form";
-import useGeolocation from "../../hooks/useGeolocation";
 import convertLatLngString from "../../utils/convertLatLngString";
+import { trimAfterPoint } from "../../utils/trimAfterPoint";
 
 import UpdateIcon from "@mui/icons-material/Update";
 
@@ -24,21 +24,12 @@ const Geolocation = () => {
     setSelectedValue(event.target.value);
   };
 
-  // const geoState = useGeolocation();
-
-  // if (geoState.loading) {
-  //   return <p>loading... (you may need to enable permissions)</p>;
-  // }
-
-  // if (geoState.error) {
-  //   return <p>Enable permissions to access your location data</p>;
-  // }
 
   const onSuccess = (position: GeolocationPosition) => {
-    console.log(position.coords.latitude);
+    console.log(trimAfterPoint(position.coords.latitude.toString()));
     console.log(position.coords.longitude);
-    setValue("latitude", position.coords.latitude);
-    setValue("longitude", position.coords.longitude);
+    setValue("latitude", trimAfterPoint(position.coords.latitude.toString()));
+    setValue("longitude", trimAfterPoint(position.coords.longitude.toString()));
     setSelectedValue("c");
   };
   

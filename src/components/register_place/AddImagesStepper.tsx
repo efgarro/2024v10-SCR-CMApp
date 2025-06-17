@@ -20,6 +20,7 @@ import AddImagesStepOne from "./AddImagesStepOne";
 import AddImagesStepTwo from "./AddImagesStepTwo";
 import AddImagesStepThree from "./AddImagesStepThree";
 import AddImagesSummary from "./AddImagesSummary";
+import { useParams } from "react-router-dom";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -34,9 +35,11 @@ function getStepContent(step: number) {
   }
 }
 
-const AddStepper = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
-
+const AddImageStepper = () => {
+  const params = useParams();
+  const step = params.step !== undefined ? parseInt(params.step) : 0;
+  const [activeStep, setActiveStep] = React.useState(step);
+  
   const {
     defaultPlacePropsStore,
     dispatchPlacePropsStore,
@@ -44,7 +47,7 @@ const AddStepper = () => {
     setNextStep,
   } = useRegisterPlace();
 
-  setNextStep(true);
+setNextStep(true); // remover
 
   const handleNext = () => {
     console.log(activeStep);
@@ -72,7 +75,7 @@ const AddStepper = () => {
   const steps = [
     "Select Place",
     "Add & Sort Images",
-    "Review & Save to Database",
+    "Preview & Save to Database",
   ];
 
   return (
@@ -185,4 +188,4 @@ const AddStepper = () => {
   );
 };
 
-export default AddStepper;
+export default AddImageStepper;
